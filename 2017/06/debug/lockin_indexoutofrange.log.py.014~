@@ -1,0 +1,21 @@
+# IPython log file
+
+# Wed, 07 Jun 2017 22:39:08
+liS
+#[Out]# <Nowack_Lab.Instruments.lockin.SR830 at 0xca83ba8>
+# Wed, 07 Jun 2017 22:39:16
+liC.__getstate__()
+#[Out]# {'R': 9.68583e-07,
+#[Out]#  'X': 9.27601e-07,
+#[Out]#  'Y': 2.74742e-07,
+#[Out]#  'amplitude': 1.0,
+#[Out]#  'frequency': 26750.0,
+#[Out]#  'gpib_address': 'GPIB::12::INSTR',
+#[Out]#  'harmonic': 1,
+#[Out]#  'phase': 47.15,
+#[Out]#  'reserve': 'Low Noise',
+#[Out]#  'sensitivity': 2e-05,
+#[Out]#  'theta': 16.728,
+#[Out]#  'time_constant': 0.3}
+# Wed, 07 Jun 2017 22:39:23
+liS.__getstate__()

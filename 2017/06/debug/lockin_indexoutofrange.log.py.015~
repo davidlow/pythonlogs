@@ -1,0 +1,16 @@
+# IPython log file
+
+a = TestClass.load()
+spectrum = spectrum = DaqSpectrum(instruments, measure_time=.1, 
+                                          annotate_notes=True);
+spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+spectrum.do()
+# Wed, 07 Jun 2017 22:37:28
+liC
+#[Out]# <Nowack_Lab.Instruments.lockin.SR830 at 0xe613e80>
+# Wed, 07 Jun 2017 22:37:30
+liS
+#[Out]# <Nowack_Lab.Instruments.lockin.SR830 at 0xe615358>
+# Wed, 07 Jun 2017 22:37:40
+liS.__getstate__()

@@ -1,0 +1,12 @@
+# IPython log file
+
+# Wed, 07 Jun 2017 21:36:18
+spectrum = spectrum = DaqSpectrum(instruments, measure_time=.1, 
+                                          annotate_notes=True);
+# Wed, 07 Jun 2017 21:36:25
+spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+# Wed, 07 Jun 2017 21:36:31
+spectrum.do()
+# Wed, 07 Jun 2017 21:37:14
+spectrum.save()

@@ -1,0 +1,62 @@
+# IPython log file
+
+# Thu, 01 Jun 2017 03:42:25
+get_ipython().magic('load setup.py')
+# Thu, 01 Jun 2017 03:43:42
+get_ipython().magic('load setup.py')
+# Thu, 01 Jun 2017 03:43:49
+# %load setup.py
+from matplotlib import pyplot as plt
+plt.ion()
+from Nowack_Lab.Instruments import NIDAQ, SR830, SR5113, Piezos, Montana, Attocube, SquidArray
+from Nowack_Lab.Procedures import Planefit
+
+daq = NIDAQ(dev_name="Dev2")
+daq.outputs = {
+    'x':0,
+    'y':1,
+    'z':2
+}
+daq.inputs = {
+    'cap':0,
+    'theta':1,
+    'capx':2, #nothing connected?
+    'capy':3, #nothing connected?
+    'acx':4,
+    'acy':5,
+    'dc':6
+}
+
+pa = SR5113(port="COM3")
+pa = SR5113(port="COM2")
+pa = SR5113(port="COM3")
+
+liC = SR830(gpib_address=12)
+liS = SR830(gpib_address=13)
+
+pz = Piezos(daq)
+montana = Montana()
+atto = Attocube(montana)
+
+s = SquidArray(visaResource='COM1')
+
+instruments = {
+    'daq':daq,
+    'montana':montana,
+    'piezos':pz,
+    'lockin_cap':liC,
+    'atto': atto,
+    'preamp': pa,
+    'lockin_squid': liS,
+    'squidarray': s
+}
+
+# Thu, 01 Jun 2017 03:44:26
+pf = Planefit.load(r"C:\cygwin64\home\B82A\data\spruce\experiments\2017-05-29_daqapproach\2017-06-01\2017-06-01_013815_Planefit.json", instruments=instruments)
+# Thu, 01 Jun 2017 03:44:48
+s.tune()
+# Thu, 01 Jun 2017 03:46:18
+pf.update_c()
+sc = Scanplane(instruments,pf,span=[800,800], center=[0,0], numpts=[2000,32],scan_rate=50)
+sc.run()
+

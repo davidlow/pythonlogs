@@ -1,0 +1,8 @@
+# IPython log file
+
+# Wed, 07 Jun 2017 00:11:25
+get_ipython().magic('matplotlib qt')
+# Wed, 07 Jun 2017 00:11:29
+get_ipython().magic('matplotlib tk')
+# Wed, 07 Jun 2017 00:11:33
+get_ipython().magic('matplotlib')

@@ -1,0 +1,6 @@
+# IPython log file
+
+# Thu, 08 Jun 2017 22:40:39
+pf = Planefit(instruments)
+# Thu, 08 Jun 2017 22:40:41
+pf.run()

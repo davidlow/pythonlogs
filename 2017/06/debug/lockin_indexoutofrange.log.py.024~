@@ -1,0 +1,3 @@
+# IPython log file
+
+get_ipython().magic('load qtconsole/2017/06/debug/lockin_indexoutofrange.script.py')

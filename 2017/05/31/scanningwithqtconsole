@@ -1,0 +1,92 @@
+# IPython log file
+
+# Thu, 01 Jun 2017 03:06:46
+get_ipython().magic('load setup.py')
+# Thu, 01 Jun 2017 03:07:31
+# %load setup.py
+get_ipython().magic('matplotlib notebook')
+import Nowack_Lab
+
+daq = NIDAQ(dev_name="Dev2")
+daq.outputs = {
+    'x':0,
+    'y':1,
+    'z':2
+}
+daq.inputs = {
+    'cap':0,
+    'theta':1,
+    'capx':2, #nothing connected?
+    'capy':3, #nothing connected?
+    'acx':4,
+    'acy':5,
+    'dc':6
+}
+
+pa = SR5113(port="COM3")
+pa = SR5113(port="COM2")
+pa = SR5113(port="COM3")
+
+liC = SR830(gpib_address=12)
+liS = SR830(gpib_address=13)
+
+pz = Piezos(daq)
+montana = Montana()
+atto = Attocube(montana)
+
+s = SquidArray(visaResource='COM1')
+
+instruments = {
+    'daq':daq,
+    'montana':montana,
+    'piezos':pz,
+    'lockin_cap':liC,
+    'atto': atto,
+    'preamp': pa,
+    'lockin_squid': liS,
+    'squidarray': s
+}
+
+# Thu, 01 Jun 2017 03:08:48
+pa
+#[Out]# <Nowack_Lab.Instruments.preamp.SR5113 at 0xca4e898>
+# Thu, 01 Jun 2017 03:14:06
+get_ipython().magic('load interactivecapture.py')
+# Thu, 01 Jun 2017 03:14:28
+# %load interactivecapture.py
+import code
+import sys
+
+class Tee(object):
+  def __init__(self, log_fname, mode='a'):
+    self.log = open(log_fname, mode)
+
+  def __del__(self):
+    # Restore sin, so, se
+    sys.stdout = sys.__stdout__
+    sys.stdir = sys.__stdin__
+    sys.stderr = sys.__stderr__
+    self.log.close()
+
+  def write(self, data):
+    self.log.write(data)
+    self.log.flush()
+    sys.__stdout__.write(data)
+    sys.__stdout__.flush()
+
+  def readline(self):
+    s = sys.__stdin__.readline()
+    sys.__stdin__.flush()
+    self.log.write(s)
+    self.log.flush()
+    return s
+
+  def flush(foo):
+    return
+
+sys.stdout = sys.stderr = sys.stdin = Tee('scanningwithqtconsole.dat', 'w')
+
+console = code.InteractiveConsole()
+console.interact()
+
+#[Out]# 2

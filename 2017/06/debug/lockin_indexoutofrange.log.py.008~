@@ -1,0 +1,15 @@
+# IPython log file
+
+# Wed, 07 Jun 2017 23:16:59
+liS
+#[Out]# <Nowack_Lab.Instruments.lockin.SR830 at 0xc6a2710>
+# Wed, 07 Jun 2017 23:24:48
+liS.frequencuy
+# Wed, 07 Jun 2017 23:24:50
+liS.frequency
+#[Out]# 102000.0
+# Wed, 07 Jun 2017 23:24:54
+liS.sensitivity
+#[Out]# 0.001
+# Wed, 07 Jun 2017 23:25:47
+get_ipython().magic('run -i qtconsole/2017/06/debug/longscan_daqspectrum.debug.py')

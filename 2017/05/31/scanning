@@ -1,0 +1,107 @@
+# IPython log file
+
+# Thu, 01 Jun 2017 03:23:40
+get_ipython().magic('load setup.py')
+# Thu, 01 Jun 2017 03:23:58
+# %load setup.py
+get_ipython().magic('matplotlib notebook')
+import Nowack_Lab
+
+daq = NIDAQ(dev_name="Dev2")
+daq.outputs = {
+    'x':0,
+    'y':1,
+    'z':2
+}
+daq.inputs = {
+    'cap':0,
+    'theta':1,
+    'capx':2, #nothing connected?
+    'capy':3, #nothing connected?
+    'acx':4,
+    'acy':5,
+    'dc':6
+}
+
+pa = SR5113(port="COM3")
+pa = SR5113(port="COM2")
+pa = SR5113(port="COM3")
+
+liC = SR830(gpib_address=12)
+liS = SR830(gpib_address=13)
+
+pz = Piezos(daq)
+montana = Montana()
+atto = Attocube(montana)
+
+s = SquidArray(visaResource='COM1')
+
+instruments = {
+    'daq':daq,
+    'montana':montana,
+    'piezos':pz,
+    'lockin_cap':liC,
+    'atto': atto,
+    'preamp': pa,
+    'lockin_squid': liS,
+    'squidarray': s
+}
+
+# Thu, 01 Jun 2017 03:24:49
+s.S_flux
+#[Out]# 0
+# Thu, 01 Jun 2017 03:24:56
+s.S_bias
+#[Out]# 0
+# Thu, 01 Jun 2017 03:24:58
+s.tune()
+# Thu, 01 Jun 2017 03:28:36
+r
+# Thu, 01 Jun 2017 03:28:39
+s.tune()
+# Thu, 01 Jun 2017 03:30:11
+s.tune()
+# Thu, 01 Jun 2017 03:31:26
+r
+# Thu, 01 Jun 2017 03:31:41
+s.S_flux = 50
+# Thu, 01 Jun 2017 03:31:45
+s.reset()
+# Thu, 01 Jun 2017 03:31:49
+s.tune()
+# Thu, 01 Jun 2017 03:34:33
+pf = Planefit.load(r"C:\cygwin64\home\B82A\data\spruce\experiments\2017-05-29_daqapproach\2017-06-01\2017-06-01_013912_Scanplane.json", instruments=instruments)
+# Thu, 01 Jun 2017 03:34:35
+pf
+#[Out]# <Nowack_Lab.Procedures.scanplane.Scanplane at 0x6255f28>
+# Thu, 01 Jun 2017 03:36:02
+pf = Planefit.load(r"C:\cygwin64\home\B82A\data\spruce\experiments\2017-05-29_daqapproach\2017-06-01\2017-06-01_013815_Planefit.json", instruments=instruments)
+# Thu, 01 Jun 2017 03:37:02
+pf.update_c()
+sc = Scanplane(instruments,pf,span=[800,800], center=[0,0], numpts=[2000,32],scan_rate=50)
+sc.run()
+
+# Thu, 01 Jun 2017 03:38:32
+import importlib
+# Thu, 01 Jun 2017 03:38:42
+from importlib import reload
+# Thu, 01 Jun 2017 03:38:50
+reload(Touchdown)
+# Thu, 01 Jun 2017 03:40:44
+reload(Nowack_Lab.Procedures.touchdown)
+#[Out]# <module 'Nowack_Lab.Procedures.touchdown' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Procedures\\touchdown.py'>
+# Thu, 01 Jun 2017 03:40:53
+pf.update_c()
+sc = Scanplane(instruments,pf,span=[800,800], center=[0,0], numpts=[2000,32],scan_rate=50)
+sc.run()
+
+# Thu, 01 Jun 2017 03:41:21
+reload(Nowack_Lab)
+#[Out]# <module 'Nowack_Lab' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\__init__.py'>
+# Thu, 01 Jun 2017 03:41:32
+pf.update_c()
+sc = Scanplane(instruments,pf,span=[800,800], center=[0,0], numpts=[2000,32],scan_rate=50)
+sc.run()
+
+# Thu, 01 Jun 2017 03:41:57
+exit()

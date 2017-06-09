@@ -1,0 +1,11 @@
+# IPython log file
+
+get_ipython().magic('load qtconsole/2017/06/debug/lockin_indexoutofrange.script.py')
+# Wed, 07 Jun 2017 18:26:01
+pa = SR5113(port='COM3')
+# Wed, 07 Jun 2017 18:26:04
+pa = SR5113(port='COM3')
+# Wed, 07 Jun 2017 18:26:07
+pa = SR5113(port='COM2')
+# Wed, 07 Jun 2017 18:26:14
+pa = SR5113(port='COM3')

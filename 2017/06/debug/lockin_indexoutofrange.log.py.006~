@@ -1,0 +1,91 @@
+# IPython log file
+
+# Wed, 07 Jun 2017 23:38:33
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xf0a7160>
+# Wed, 07 Jun 2017 23:38:37
+s.tune()
+# Wed, 07 Jun 2017 23:38:51
+s = SquidArray(visaResource='COM1')
+# Wed, 07 Jun 2017 23:38:54
+s.tune()
+# Wed, 07 Jun 2017 23:40:08
+s.sensitivity='Med'
+# Wed, 07 Jun 2017 23:40:09
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xf9ac2b0>
+# Wed, 07 Jun 2017 23:40:13
+s.sensitivity
+#[Out]# 'Med'
+# Wed, 07 Jun 2017 23:40:19
+s.tune()
+# Wed, 07 Jun 2017 23:40:59
+s.unlock()
+# Wed, 07 Jun 2017 23:41:08
+s.__getstate__
+#[Out]# <bound method PFL102.__getstate__ of <Nowack_Lab.Instruments.squidarray.SquidArray object at 0x000000000F9AC2B0>>
+# Wed, 07 Jun 2017 23:41:10
+s.__getstate__()
+#[Out]# {'Array bias': 43.0,
+#[Out]#  'Array flux': 0.0,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '10kOhm',
+#[Out]#  'Integrator capacitor': '15nF',
+#[Out]#  'Preamp voltage offset': 0.1819,
+#[Out]#  'SQUID bias': 430.0,
+#[Out]#  'SQUID flux': 10.0,
+#[Out]#  'SQUID locked': False,
+#[Out]#  'Test input': 'S_flux',
+#[Out]#  'Test signal': 'Auto',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'Med'}
+# Wed, 07 Jun 2017 23:41:30
+s.S_bias = 450
+# Wed, 07 Jun 2017 23:41:54
+s.lock('array')
+# Wed, 07 Jun 2017 23:42:02
+s.reset()
+# Wed, 07 Jun 2017 23:42:24
+s.testSignal = 'On'
+# Wed, 07 Jun 2017 23:42:37
+s.lock('squid')
+# Wed, 07 Jun 2017 23:42:45
+s.testSignal ='off'
+# Wed, 07 Jun 2017 23:42:48
+s.testSignal ='Off'
+# Wed, 07 Jun 2017 23:42:53
+s.reset()
+# Wed, 07 Jun 2017 23:43:33
+instruments = {
+    'daq':daq,
+    'montana':montana,
+    'piezos':pz,
+    'lockin_cap':liC,
+    'atto': atto,
+    'preamp': pa,
+    'lockin_squid': liS,
+    'squidarray': s
+}
+# Wed, 07 Jun 2017 23:43:41
+s.reset()
+# Wed, 07 Jun 2017 23:43:47
+s.S_bias = 0
+# Wed, 07 Jun 2017 23:43:51
+s.reset()
+# Wed, 07 Jun 2017 23:44:00
+s.S_bias=450
+# Wed, 07 Jun 2017 23:44:03
+s.tune()
+# Wed, 07 Jun 2017 23:45:04
+spectrum = spectrum = DaqSpectrum(instruments, measure_time=.1, 
+                                          annotate_notes=True);\
+spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+spectrum.run()
+
+# Wed, 07 Jun 2017 23:45:21
+pa
+#[Out]# <Nowack_Lab.Instruments.preamp.SR5113 at 0xc6929b0>
+# Wed, 07 Jun 2017 23:45:31
+pa = SR5113(port='COM3')

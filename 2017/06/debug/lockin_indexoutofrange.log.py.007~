@@ -1,0 +1,24 @@
+# IPython log file
+
+# Wed, 07 Jun 2017 23:33:26
+s.tune()
+# Wed, 07 Jun 2017 23:33:46
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xf204438>
+# Wed, 07 Jun 2017 23:34:00
+s = SquidArray(visaResource='COM1')
+# Wed, 07 Jun 2017 23:34:06
+s.tune()
+# Wed, 07 Jun 2017 23:34:13
+s.tune()
+# Wed, 07 Jun 2017 23:36:30
+s.sensitivity
+#[Out]# 'High'
+# Wed, 07 Jun 2017 23:36:33
+s.sensitivity = 'Med'
+# Wed, 07 Jun 2017 23:36:34
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0x10bd30b8>
+# Wed, 07 Jun 2017 23:36:59
+get_ipython().magic('run -i qtconsole/2017/06/debug/longscan_daqspectrum.debug.py')
+

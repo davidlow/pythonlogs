@@ -1,0 +1,8 @@
+# IPython log file
+
+get_ipython().magic('load qtconsole/2017/06/debug/lockin_indexoutofrange.script.py')
+# Wed, 07 Jun 2017 18:27:11
+pa
+#[Out]# <Nowack_Lab.Instruments.preamp.SR5113 at 0xc63b7f0>
+# Wed, 07 Jun 2017 18:27:21
+pa.is_OL()

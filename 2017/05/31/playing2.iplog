@@ -1,0 +1,47 @@
+# IPython log file
+
+# Thu, 01 Jun 2017 03:16:45
+get_ipython().magic('load interactivecapture.py')
+# Thu, 01 Jun 2017 03:16:58
+# %load interactivecapture.py
+import code
+import sys
+
+class Tee(object):
+  def __init__(self, log_fname, mode='a'):
+    self.log = open(log_fname, mode)
+
+  def __del__(self):
+    # Restore sin, so, se
+    sys.stdout = sys.__stdout__
+    sys.stdir = sys.__stdin__
+    sys.stderr = sys.__stderr__
+    self.log.close()
+
+  def write(self, data):
+    self.log.write(data)
+    self.log.flush()
+    sys.__stdout__.write(data)
+    sys.__stdout__.flush()
+
+  def readline(self):
+    s = sys.__stdin__.readline()
+    sys.__stdin__.flush()
+    self.log.write(s)
+    self.log.flush()
+    return s
+
+  def flush(foo):
+    return
+
+sys.stdout = sys.stderr = sys.stdin = Tee('consolelog.dat', 'w')
+
+
+
+# Thu, 01 Jun 2017 03:17:02
+1+1
+#[Out]# 2
+# Thu, 01 Jun 2017 03:17:19
+print('hello')
+# Thu, 01 Jun 2017 03:20:19
+exit()
