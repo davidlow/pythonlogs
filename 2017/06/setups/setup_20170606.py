@@ -1,4 +1,11 @@
-### Setup script, modified from gmf57
+### Setup script, modified from gmf57.  
+###
+###  +-----------------+
+###  |  DO NOT MODIFY  |
+###  +-----------------+
+###
+### Make a copy and rename with today's date
+###
 ### Author: david low (dhl88)
 
 from matplotlib import pyplot as plt

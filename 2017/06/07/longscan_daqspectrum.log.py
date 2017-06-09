@@ -1,22 +1,84 @@
 # IPython log file
 
-get_ipython().magic('load qtconsole/2017/06/setups/main_20170607.py')
-# Thu, 08 Jun 2017 02:43:18
-4*10*50/60
-#[Out]# 33.333333333333336
-# Thu, 08 Jun 2017 02:43:22
-4*10*10/60
-#[Out]# 6.666666666666667
-# Thu, 08 Jun 2017 02:43:24
-4*10*15/60
-#[Out]# 10.0
-# Thu, 08 Jun 2017 02:43:27
-4*10*18/60
-#[Out]# 12.0
-# Thu, 08 Jun 2017 02:43:36
-4*10*20/60
-#[Out]# 13.333333333333334
-# Thu, 08 Jun 2017 02:44:06
-get_ipython().magic('load qtconsole/2017/06/setups/main_20170607.py')
-# Thu, 08 Jun 2017 02:44:31
-get_ipython().magic('run -i qtconsole/2017/06/setups/longscan_daqspectrum.py')
+get_ipython().magic('load qtconsole/2017/06/setups/startlog_20170608.py')
+# Fri, 09 Jun 2017 02:59:33
+get_ipython().magic('load qtconsole/2017/06/setups/main_20170608.py')
+# Fri, 09 Jun 2017 02:59:35
+# %load qtconsole/2017/06/setups/main_20170608.py
+### Setup script main, load me and modify
+### Author: david low (dhl88)
+
+get_ipython().magic('matplotlib qt5')
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170606.py')
+pf = Planefit.load(instruments=instruments)
+# %run -i qtconsole/2017/06/setups/longscan_daqspectrum.py
+
+# 2017-06-07T15:31 reproduced this error with just this code
+
+# Fri, 09 Jun 2017 03:00:03
+get_ipython().magic('load qtconsole/2017/06/setups/quickscan_20170608.py')
+# Fri, 09 Jun 2017 03:00:25
+# %load qtconsole/2017/06/setups/quickscan_20170608.py
+plt.close('all')
+pf = Planefit.load();
+sc = Scanplane(instruments,pf,span=[800,800], center=[0,0], numpts=[2000,27],scan_rate=100, scanheight=30)
+sc.notes = '''
+[dhl88]  Quick scan for testing scanning, last time, code changed
+and lockin on and sending current
+'''
+sc.run()
+
+# Fri, 09 Jun 2017 03:41:54
+# %load qtconsole/2017/06/setups/quickscan_20170608.py
+plt.close('all')
+# pf = Planefit.load();
+sc = Scanplane(instruments,pf,span=[800,800], center=[0,0], numpts=[2000,27],scan_rate=100, scanheight=15)
+sc.notes = '''
+[dhl88]  Couldn't get code to work, scanning closer to see how 
+close I can scan reliably
+'''
+sc.run()
+
+# Fri, 09 Jun 2017 03:54:50
+# %load qtconsole/2017/06/setups/quickscan_20170608.py
+plt.close('all')
+# pf = Planefit.load();
+sc = Scanplane(instruments,pf,span=[800,800], center=[0,0], numpts=[2000,27],scan_rate=100, scanheight=7)
+sc.notes = '''
+[dhl88]  Couldn't get code to work, scanning closer to see how 
+close I can scan reliably
+'''
+sc.run()
+
+# Fri, 09 Jun 2017 04:15:26
+# %load qtconsole/2017/06/setups/quickscan_20170608.py
+plt.close('all')
+# pf = Planefit.load();
+sc = Scanplane(instruments,pf,span=[800,800], center=[0,0], numpts=[2000,27],scan_rate=100, scanheight=11)
+sc.notes = '''
+[dhl88]  Splitting the difference between no touching scan and touching
+scan
+'''
+sc.run()
+
+# Fri, 09 Jun 2017 04:27:54
+# %load qtconsole/2017/06/setups/quickscan_20170608.py
+plt.close('all')
+# pf = Planefit.load();
+sc = Scanplane(instruments,pf,span=[800,800], center=[0,0], numpts=[2000,27],scan_rate=100, scanheight=13)
+sc.notes = '''
+[dhl88]  Splitting the difference between no touching scan and touching
+scan
+'''
+sc.run()
+
+# Fri, 09 Jun 2017 05:09:31
+get_ipython().magic('load qtconsole/2017/06/setups/startlog_20170608.py')
+# Fri, 09 Jun 2017 05:10:13
+# %load qtconsole/2017/06/setups/startlog_20170608.py
+### Just starts logs.  This will never be in the log file
+### Author: david low (dhl88)
+
+get_ipython().magic('logstart -ot qtconsole/2017/06/09/longscan.log.py rotate')
+# Fri, 09 Jun 2017 05:10:19
+get_ipython().magic('logoff')
