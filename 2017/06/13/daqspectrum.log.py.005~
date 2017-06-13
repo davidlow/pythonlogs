@@ -1,0 +1,46 @@
+# IPython log file
+
+get_ipython().magic('load qtconsole/2017/06/setups/startlog_20170608.py')
+# Tue, 13 Jun 2017 21:04:46
+get_ipython().magic('load qtconsole/2017/06/setups/main_20170608.py')
+# Tue, 13 Jun 2017 21:04:50
+# %load qtconsole/2017/06/setups/main_20170608.py
+### Setup script main, load me and modify
+### Author: david low (dhl88)
+
+get_ipython().magic('matplotlib qt5')
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170606.py')
+# pf = Planefit.load(instruments=instruments)
+# %run -i qtconsole/2017/06/setups/longscan_daqspectrum.py
+
+# 2017-06-07T15:31 reproduced this error with just this code
+
+# Tue, 13 Jun 2017 21:04:57
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xc9ef160>
+# Tue, 13 Jun 2017 21:05:09
+s._visaResource
+# Tue, 13 Jun 2017 21:08:01
+s = SquidArray(visaResource='COM1')
+# Tue, 13 Jun 2017 21:08:21
+s.load(r"C:\Users\B82A\Documents\GitHub\Nowack_Lab\Instruments\squidarray_params.json")
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xf095ba8>
+# Tue, 13 Jun 2017 21:08:24
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xf095a20>
+# Tue, 13 Jun 2017 21:08:30
+s.__getstate__()
+#[Out]# {'Array bias': 0,
+#[Out]#  'Array flux': 0,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0,
+#[Out]#  'SQUID bias': 0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': False,
+#[Out]#  'Test input': 'A_flux',
+#[Out]#  'Test signal': 'Auto',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}

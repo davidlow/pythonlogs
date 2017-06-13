@@ -1,0 +1,45 @@
+# IPython log file
+
+get_ipython().magic('load qtconsole/2017/06/setups/startlog_20170608.py')
+# Tue, 13 Jun 2017 22:32:55
+get_ipython().magic('load qtconsole/2017/06/setups/main_20170613.py')
+# Tue, 13 Jun 2017 22:33:00
+# %load qtconsole/2017/06/setups/main_20170613.py
+### Setup script main, load me and modify
+### Author: david low (dhl88)
+
+get_ipython().magic('matplotlib qt5')
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170613.py')
+
+# Tue, 13 Jun 2017 22:33:31
+# %load qtconsole/2017/06/setups/main_20170613.py
+### Setup script main, load me and modify
+### Author: david low (dhl88)
+
+get_ipython().magic('matplotlib qt5')
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170613.py')
+
+# Tue, 13 Jun 2017 22:34:10
+# %load qtconsole/2017/06/setups/main_20170613.py
+### Setup script main, load me and modify
+### Author: david low (dhl88)
+
+get_ipython().magic('matplotlib qt5')
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170613.py')
+
+# Tue, 13 Jun 2017 22:34:28
+# %load qtconsole/2017/06/setups/main_20170613.py
+### Setup script main, load me and modify
+### Author: david low (dhl88)
+
+get_ipython().magic('matplotlib qt5')
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170613.py')
+
+# Tue, 13 Jun 2017 22:34:59
+# %load qtconsole/2017/06/setups/main_20170613.py
+### Setup script main, load me and modify
+### Author: david low (dhl88)
+
+get_ipython().magic('matplotlib qt5')
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170613.py')
+

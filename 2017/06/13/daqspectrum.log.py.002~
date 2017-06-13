@@ -1,0 +1,107 @@
+# IPython log file
+
+# Tue, 13 Jun 2017 21:12:08
+# %load qtconsole/2017/06/setups/main_20170608.py
+### Setup script main, load me and modify
+### Author: david low (dhl88)
+
+get_ipython().magic('matplotlib qt5')
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170606.py')
+# pf = Planefit.load(instruments=instruments)
+# %run -i qtconsole/2017/06/setups/longscan_daqspectrum.py
+
+# 2017-06-07T15:31 reproduced this error with just this code
+
+# Tue, 13 Jun 2017 21:12:17
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xe5bf6d8>
+# Tue, 13 Jun 2017 21:12:21
+s.reset()
+# Tue, 13 Jun 2017 21:12:26
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xe5bf6d8>
+# Tue, 13 Jun 2017 21:12:34
+s.__getstate__()
+#[Out]# {'Array bias': 0,
+#[Out]#  'Array flux': 0,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0,
+#[Out]#  'SQUID bias': 0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': False,
+#[Out]#  'Test input': 'A_flux',
+#[Out]#  'Test signal': 'Auto',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
+# Tue, 13 Jun 2017 21:12:46
+instruments['squidarray'].__getstate__()
+#[Out]# {'Array bias': 0,
+#[Out]#  'Array flux': 0,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0,
+#[Out]#  'SQUID bias': 0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': False,
+#[Out]#  'Test input': 'A_flux',
+#[Out]#  'Test signal': 'Auto',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
+# Tue, 13 Jun 2017 21:13:41
+s = SquidArray.load(visaResource='COM1')
+# Tue, 13 Jun 2017 21:13:42
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xe5cf4e0>
+# Tue, 13 Jun 2017 21:13:49
+s.__getstate__()
+#[Out]# {'Array bias': 0,
+#[Out]#  'Array flux': 0,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0,
+#[Out]#  'SQUID bias': 0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': False,
+#[Out]#  'Test input': 'A_flux',
+#[Out]#  'Test signal': 'Auto',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
+# Tue, 13 Jun 2017 21:14:12
+s = SquidArray.load(r"C:\Users\B82A\Documents\GitHub\Nowack_Lab\Instruments\squidarray_params.json", visaResource='COM1')
+# Tue, 13 Jun 2017 21:14:15
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xf2484e0>
+# Tue, 13 Jun 2017 21:14:19
+s.__getstate__()
+#[Out]# {'Array bias': 0,
+#[Out]#  'Array flux': 0,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0,
+#[Out]#  'SQUID bias': 0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': False,
+#[Out]#  'Test input': 'A_flux',
+#[Out]#  'Test signal': 'Auto',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
+# Tue, 13 Jun 2017 21:21:16
+s.A_bias=60
+# Tue, 13 Jun 2017 21:21:23
+s.reset()
+# Tue, 13 Jun 2017 21:29:40
+s.A_flux
+#[Out]# 0
+# Tue, 13 Jun 2017 21:29:53
+s.reset()
+# Tue, 13 Jun 2017 21:55:37
+s.reset()

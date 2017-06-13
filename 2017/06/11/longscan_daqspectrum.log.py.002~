@@ -1,0 +1,990 @@
+# IPython log file
+
+get_ipython().magic('load qtconsole/2017/06/setups/startlog_20170608.py')
+# Mon, 12 Jun 2017 00:31:24
+get_ipython().magic('load qtconsole/2017/06/setups/main_20170608.py')
+# Mon, 12 Jun 2017 00:31:30
+# %load qtconsole/2017/06/setups/main_20170608.py
+### Setup script main, load me and modify
+### Author: david low (dhl88)
+
+get_ipython().magic('matplotlib qt5')
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170606.py')
+#pf = Planefit.load(instruments=instruments)
+# %run -i qtconsole/2017/06/setups/longscan_daqspectrum.py
+
+# 2017-06-07T15:31 reproduced this error with just this code
+
+# Mon, 12 Jun 2017 00:31:47
+pf = Planefit.load(r"C:\cygwin64\home\B82A\data\spruce\experiments\2017-06-08_mattplane_and_scan\2017-06-09\2017-06-09_011238_Planefit.json", instruments)
+# Mon, 12 Jun 2017 00:31:55
+get_ipython().magic('load qtconsole/2017/06/setups/longscan_daqspectrum_original.py')
+# Mon, 12 Jun 2017 00:32:05
+# %load qtconsole/2017/06/setups/longscan_daqspectrum_original.py
+# daqspectrum height series across a feature
+
+#zs = np.array([50,100,180,200]);
+#xs = np.linspace(150,250,20);
+zs = np.array([50,100,180,200]);
+xs = np.linspace(150,250,3);
+
+vs = np.outer(zs,xs);
+cs = np.outer(zs,xs);
+
+
+for x in range(len(xs)):
+    for z in range(len(zs)):
+        pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[z]});
+        spectrum = spectrum = DaqSpectrum(instruments, measure_time=.10, 
+                                          annotate_notes=True);
+        spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+        spectrum.run()
+        vs[z][x] = np.mean(spectrum.V)
+        cs[z][x] = instruments['lockin_cap'].R;
+        plt.close('all');
+    pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[0]});
+
+from Nowack_Lab.Utilities.utilities import AttrDict
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+
+class Longscan_daqspectrumheight(Measurement):
+    def __init__(self, instruments):
+        super().__init__(instruments=instruments);
+    def do(self, xs=[], zs=[], vs=[], cs=[]):
+        self.xs = xs;
+        self.zs = zs;
+        self.vs = vs;
+        self.cs = cs;
+        self.plot();
+        return;
+    def plot(self):
+        super().plot();
+        image = self.ax['ave'].imshow(vs, cmap='viridis', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['ave'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('average value', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-2,2))
+
+        image = self.ax['cap'].imshow(cs, cmap='inferno', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['cap'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('capacitance', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-8,6))
+
+        self.ax['ave'].set_xlabel('x');
+        self.ax['ave'].set_ylabel('z');
+        self.ax['cap'].set_xlabel('x');
+        self.ax['cap'].set_ylabel('z');
+    def setup_plots(self):
+        self.fig = plt.figure(figsize=(12,6))
+        self.ax = AttrDict()
+        self.ax['ave'] = self.fig.add_subplot(121)
+        self.ax['cap'] = self.fig.add_subplot(122)
+        title = ax['ave'].set_title(self.timestamp, size="medium", y=1.02)
+        title = ax['cap'].set_title(self.timestamp, size="medium", y=1.02)
+
+
+ls_dsh = Longscan_daqspectrumheight(instruments=instruments);
+ls_dsh.run(xs=xs,zs=zs,vs=vs,cs=cs);
+
+# Mon, 12 Jun 2017 00:39:54
+# %load qtconsole/2017/06/setups/longscan_daqspectrum_original.py
+# daqspectrum height series across a feature
+
+#zs = np.array([50,100,180,200]);
+#xs = np.linspace(150,250,20);
+zs = np.array([50,100,180,200]);
+xs = np.linspace(150,250,3);
+
+vs = np.outer(zs,xs);
+cs = np.outer(zs,xs);
+
+
+for x in range(len(xs)):
+    for z in range(len(zs)):
+        pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[z]});
+        spectrum = spectrum = DaqSpectrum(instruments, measure_time=.10, 
+                                          annotate_notes=True);
+        spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+        spectrum.run()
+        vs[z][x] = np.mean(spectrum.V)
+        cs[z][x] = instruments['lockin_cap'].R;
+        plt.close('all');
+    pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[0]});
+
+from Nowack_Lab.Utilities.utilities import AttrDict
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+
+class Longscan_daqspectrumheight(Measurement):
+    def __init__(self, instruments):
+        super().__init__(instruments=instruments);
+    def do(self, xs=[], zs=[], vs=[], cs=[]):
+        self.xs = xs;
+        self.zs = zs;
+        self.vs = vs;
+        self.cs = cs;
+        self.plot();
+        return;
+    def plot(self):
+        super().plot();
+        image = self.ax['ave'].imshow(vs, cmap='viridis', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['ave'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('average value', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-2,2))
+
+        image = self.ax['cap'].imshow(cs, cmap='inferno', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['cap'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('capacitance', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-8,6))
+
+        self.ax['ave'].set_xlabel('x');
+        self.ax['ave'].set_ylabel('z');
+        self.ax['cap'].set_xlabel('x');
+        self.ax['cap'].set_ylabel('z');
+    def setup_plots(self):
+        self.fig = plt.figure(figsize=(12,6))
+        self.ax = AttrDict()
+        self.ax['ave'] = self.fig.add_subplot(121)
+        self.ax['cap'] = self.fig.add_subplot(122)
+        title = ax['ave'].set_title(self.timestamp, size="medium", y=1.02)
+        title = ax['cap'].set_title(self.timestamp, size="medium", y=1.02)
+
+
+ls_dsh = Longscan_daqspectrumheight(instruments=instruments);
+ls_dsh.run(xs=xs,zs=zs,vs=vs,cs=cs);
+
+# Mon, 12 Jun 2017 01:05:07
+get_ipython().magic('load qtconsole/2017/06/setups/longscan_daqspectrum_original.py')
+# Mon, 12 Jun 2017 01:05:08
+# %load qtconsole/2017/06/setups/longscan_daqspectrum_original.py
+# daqspectrum height series across a feature
+
+#zs = np.array([50,100,180,200]);
+#xs = np.linspace(150,250,20);
+zs = np.array([50,100,180,200]);
+xs = np.linspace(150,250,3);
+
+vs = np.outer(zs,xs);
+cs = np.outer(zs,xs);
+
+
+for x in range(len(xs)):
+    for z in range(len(zs)):
+        pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[z]});
+        spectrum = spectrum = DaqSpectrum(instruments, measure_time=.10, 
+                                          annotate_notes=True);
+        spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+        spectrum.run()
+        vs[z][x] = np.mean(spectrum.V)
+        cs[z][x] = instruments['lockin_cap'].R;
+        plt.close('all');
+    pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[0]});
+
+from Nowack_Lab.Utilities.utilities import AttrDict
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+
+class Longscan_daqspectrumheight(Measurement):
+    def __init__(self, instruments):
+        super().__init__(instruments=instruments);
+    def do(self, xs=[], zs=[], vs=[], cs=[]):
+        self.xs = xs;
+        self.zs = zs;
+        self.vs = vs;
+        self.cs = cs;
+        self.plot();
+        return;
+    def plot(self):
+        super().plot();
+        image = self.ax['ave'].imshow(vs, cmap='viridis', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['ave'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('average value', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-2,2))
+
+        image = self.ax['cap'].imshow(cs, cmap='inferno', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['cap'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('capacitance', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-8,6))
+
+        self.ax['ave'].set_xlabel('x');
+        self.ax['ave'].set_ylabel('z');
+        self.ax['cap'].set_xlabel('x');
+        self.ax['cap'].set_ylabel('z');
+    def setup_plots(self):
+        self.fig = plt.figure(figsize=(12,6))
+        self.ax = AttrDict()
+        self.ax['ave'] = self.fig.add_subplot(121)
+        self.ax['cap'] = self.fig.add_subplot(122)
+        title = self.ax['ave'].set_title(self.timestamp, size="medium", y=1.02)
+        title = self.ax['cap'].set_title(self.timestamp, size="medium", y=1.02)
+
+
+ls_dsh = Longscan_daqspectrumheight(instruments=instruments);
+ls_dsh.run(xs=xs,zs=zs,vs=vs,cs=cs);
+
+# Mon, 12 Jun 2017 01:13:24
+get_ipython().magic('load qtconsole/2017/06/setups/longscan_daqspectrum_original.py')
+# Mon, 12 Jun 2017 01:13:45
+# %load qtconsole/2017/06/setups/longscan_daqspectrum_original.py
+# daqspectrum height series across a feature
+
+#zs = np.array([50,100,180,200]);
+#xs = np.linspace(150,250,20);
+zs = np.array([50,100,180,200]);
+xs = np.linspace([200,300,3);
+
+vs = np.outer(zs,xs);
+cs = np.outer(zs,xs);
+
+
+for x in range(len(xs)):
+    for z in range(len(zs)):
+        pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[z]});
+        spectrum = spectrum = DaqSpectrum(instruments, measure_time=.10, 
+                                          annotate_notes=True);
+        spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+        spectrum.run()
+        vs[z][x] = np.mean(spectrum.V)
+        cs[z][x] = instruments['lockin_cap'].R;
+        plt.close('all');
+    pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[0]});
+
+from Nowack_Lab.Utilities.utilities import AttrDict
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+
+class Longscan_daqspectrumheight(Measurement):
+    def __init__(self, instruments):
+        super().__init__(instruments=instruments);
+    def do(self, xs=[], zs=[], vs=[], cs=[]):
+        self.xs = xs;
+        self.zs = zs;
+        self.vs = vs;
+        self.cs = cs;
+        self.plot();
+        return;
+    def plot(self):
+        super().plot();
+        image = self.ax['ave'].imshow(vs, cmap='viridis', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['ave'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('average value', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-2,2))
+
+        image = self.ax['cap'].imshow(cs, cmap='inferno', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['cap'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('capacitance', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-8,6))
+
+        self.ax['ave'].set_xlabel('x');
+        self.ax['ave'].set_ylabel('z');
+        self.ax['cap'].set_xlabel('x');
+        self.ax['cap'].set_ylabel('z');
+    def setup_plots(self):
+        self.fig = plt.figure(figsize=(12,6))
+        self.ax = AttrDict()
+        self.ax['ave'] = self.fig.add_subplot(121)
+        self.ax['cap'] = self.fig.add_subplot(122)
+        title = self.ax['ave'].set_title(self.timestamp, size="medium", y=1.02)
+        title = self.ax['cap'].set_title(self.timestamp, size="medium", y=1.02)
+
+
+ls_dsh = Longscan_daqspectrumheight(instruments=instruments);
+ls_dsh.run(xs=xs,zs=zs,vs=vs,cs=cs);
+# Mon, 12 Jun 2017 01:13:56
+get_ipython().magic('load qtconsole/2017/06/setups/longscan_daqspectrum_original.py')
+# Mon, 12 Jun 2017 01:13:57
+# %load qtconsole/2017/06/setups/longscan_daqspectrum_original.py
+# daqspectrum height series across a feature
+
+#zs = np.array([50,100,180,200]);
+#xs = np.linspace(150,250,20);
+zs = np.array([50,100,180,200]);
+xs = np.linspace([200,300,3]);
+
+vs = np.outer(zs,xs);
+cs = np.outer(zs,xs);
+
+
+for x in range(len(xs)):
+    for z in range(len(zs)):
+        pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[z]});
+        spectrum = spectrum = DaqSpectrum(instruments, measure_time=.10, 
+                                          annotate_notes=True);
+        spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+        spectrum.run()
+        vs[z][x] = np.mean(spectrum.V)
+        cs[z][x] = instruments['lockin_cap'].R;
+        plt.close('all');
+    pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[0]});
+
+from Nowack_Lab.Utilities.utilities import AttrDict
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+
+class Longscan_daqspectrumheight(Measurement):
+    def __init__(self, instruments):
+        super().__init__(instruments=instruments);
+    def do(self, xs=[], zs=[], vs=[], cs=[]):
+        self.xs = xs;
+        self.zs = zs;
+        self.vs = vs;
+        self.cs = cs;
+        self.plot();
+        return;
+    def plot(self):
+        super().plot();
+        image = self.ax['ave'].imshow(vs, cmap='viridis', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['ave'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('average value', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-2,2))
+
+        image = self.ax['cap'].imshow(cs, cmap='inferno', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['cap'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('capacitance', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-8,6))
+
+        self.ax['ave'].set_xlabel('x');
+        self.ax['ave'].set_ylabel('z');
+        self.ax['cap'].set_xlabel('x');
+        self.ax['cap'].set_ylabel('z');
+    def setup_plots(self):
+        self.fig = plt.figure(figsize=(12,6))
+        self.ax = AttrDict()
+        self.ax['ave'] = self.fig.add_subplot(121)
+        self.ax['cap'] = self.fig.add_subplot(122)
+        title = self.ax['ave'].set_title(self.timestamp, size="medium", y=1.02)
+        title = self.ax['cap'].set_title(self.timestamp, size="medium", y=1.02)
+
+
+ls_dsh = Longscan_daqspectrumheight(instruments=instruments);
+ls_dsh.run(xs=xs,zs=zs,vs=vs,cs=cs);
+
+# Mon, 12 Jun 2017 01:14:08
+get_ipython().magic('load qtconsole/2017/06/setups/longscan_daqspectrum_original.py')
+# Mon, 12 Jun 2017 01:14:09
+# %load qtconsole/2017/06/setups/longscan_daqspectrum_original.py
+# daqspectrum height series across a feature
+
+#zs = np.array([50,100,180,200]);
+#xs = np.linspace(150,250,20);
+zs = np.array([50,100,180,200]);
+xs = np.linspace(200,300,3);
+
+vs = np.outer(zs,xs);
+cs = np.outer(zs,xs);
+
+
+for x in range(len(xs)):
+    for z in range(len(zs)):
+        pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[z]});
+        spectrum = spectrum = DaqSpectrum(instruments, measure_time=.10, 
+                                          annotate_notes=True);
+        spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+        spectrum.run()
+        vs[z][x] = np.mean(spectrum.V)
+        cs[z][x] = instruments['lockin_cap'].R;
+        plt.close('all');
+    pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[0]});
+
+from Nowack_Lab.Utilities.utilities import AttrDict
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+
+class Longscan_daqspectrumheight(Measurement):
+    def __init__(self, instruments):
+        super().__init__(instruments=instruments);
+    def do(self, xs=[], zs=[], vs=[], cs=[]):
+        self.xs = xs;
+        self.zs = zs;
+        self.vs = vs;
+        self.cs = cs;
+        self.plot();
+        return;
+    def plot(self):
+        super().plot();
+        image = self.ax['ave'].imshow(vs, cmap='viridis', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['ave'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('average value', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-2,2))
+
+        image = self.ax['cap'].imshow(cs, cmap='inferno', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['cap'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('capacitance', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-8,6))
+
+        self.ax['ave'].set_xlabel('x');
+        self.ax['ave'].set_ylabel('z');
+        self.ax['cap'].set_xlabel('x');
+        self.ax['cap'].set_ylabel('z');
+    def setup_plots(self):
+        self.fig = plt.figure(figsize=(12,6))
+        self.ax = AttrDict()
+        self.ax['ave'] = self.fig.add_subplot(121)
+        self.ax['cap'] = self.fig.add_subplot(122)
+        title = self.ax['ave'].set_title(self.timestamp, size="medium", y=1.02)
+        title = self.ax['cap'].set_title(self.timestamp, size="medium", y=1.02)
+
+
+ls_dsh = Longscan_daqspectrumheight(instruments=instruments);
+ls_dsh.run(xs=xs,zs=zs,vs=vs,cs=cs);
+# Mon, 12 Jun 2017 01:18:47
+get_ipython().magic('load qtconsole/2017/06/setups/longscan_daqspectrum_original.py')
+# Mon, 12 Jun 2017 01:18:48
+# %load qtconsole/2017/06/setups/longscan_daqspectrum_original.py
+# daqspectrum height series across a feature
+
+#zs = np.array([50,100,180,200]);
+#xs = np.linspace(150,250,20);
+zs = np.array([50,100,180,200]);
+xs = np.linspace(180,280,3);
+
+vs = np.outer(zs,xs);
+cs = np.outer(zs,xs);
+
+
+for x in range(len(xs)):
+    for z in range(len(zs)):
+        pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[z]});
+        spectrum = spectrum = DaqSpectrum(instruments, measure_time=.10, 
+                                          annotate_notes=True);
+        spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+        spectrum.run()
+        vs[z][x] = np.mean(spectrum.V)
+        cs[z][x] = instruments['lockin_cap'].R;
+        plt.close('all');
+    pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[0]});
+
+from Nowack_Lab.Utilities.utilities import AttrDict
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+
+class Longscan_daqspectrumheight(Measurement):
+    def __init__(self, instruments):
+        super().__init__(instruments=instruments);
+    def do(self, xs=[], zs=[], vs=[], cs=[]):
+        self.xs = xs;
+        self.zs = zs;
+        self.vs = vs;
+        self.cs = cs;
+        self.plot();
+        return;
+    def plot(self):
+        super().plot();
+        image = self.ax['ave'].imshow(vs, cmap='viridis', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['ave'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('average value', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-2,2))
+
+        image = self.ax['cap'].imshow(cs, cmap='inferno', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['cap'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('capacitance', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-8,6))
+
+        self.ax['ave'].set_xlabel('x');
+        self.ax['ave'].set_ylabel('z');
+        self.ax['cap'].set_xlabel('x');
+        self.ax['cap'].set_ylabel('z');
+    def setup_plots(self):
+        self.fig = plt.figure(figsize=(12,6))
+        self.ax = AttrDict()
+        self.ax['ave'] = self.fig.add_subplot(121)
+        self.ax['cap'] = self.fig.add_subplot(122)
+        title = self.ax['ave'].set_title(self.timestamp, size="medium", y=1.02)
+        title = self.ax['cap'].set_title(self.timestamp, size="medium", y=1.02)
+
+
+ls_dsh = Longscan_daqspectrumheight(instruments=instruments);
+ls_dsh.run(xs=xs,zs=zs,vs=vs,cs=cs);
+# Mon, 12 Jun 2017 01:24:19
+get_ipython().magic('load qtconsole/2017/06/setups/longscan_daqspectrum_original.py')
+# Mon, 12 Jun 2017 01:24:20
+# %load qtconsole/2017/06/setups/longscan_daqspectrum_original.py
+# daqspectrum height series across a feature
+
+#zs = np.array([50,100,180,200]);
+#xs = np.linspace(150,250,20);
+zs = np.array([50,100,180,200]);
+xs = np.linspace(160,260,3);
+
+vs = np.outer(zs,xs);
+cs = np.outer(zs,xs);
+
+
+for x in range(len(xs)):
+    for z in range(len(zs)):
+        pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[z]});
+        spectrum = spectrum = DaqSpectrum(instruments, measure_time=.10, 
+                                          annotate_notes=True);
+        spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+        spectrum.run()
+        vs[z][x] = np.mean(spectrum.V)
+        cs[z][x] = instruments['lockin_cap'].R;
+        plt.close('all');
+    pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[0]});
+
+from Nowack_Lab.Utilities.utilities import AttrDict
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+
+class Longscan_daqspectrumheight(Measurement):
+    def __init__(self, instruments):
+        super().__init__(instruments=instruments);
+    def do(self, xs=[], zs=[], vs=[], cs=[]):
+        self.xs = xs;
+        self.zs = zs;
+        self.vs = vs;
+        self.cs = cs;
+        self.plot();
+        return;
+    def plot(self):
+        super().plot();
+        image = self.ax['ave'].imshow(vs, cmap='viridis', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['ave'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('average value', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-2,2))
+
+        image = self.ax['cap'].imshow(cs, cmap='inferno', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['cap'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('capacitance', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-8,6))
+
+        self.ax['ave'].set_xlabel('x');
+        self.ax['ave'].set_ylabel('z');
+        self.ax['cap'].set_xlabel('x');
+        self.ax['cap'].set_ylabel('z');
+    def setup_plots(self):
+        self.fig = plt.figure(figsize=(12,6))
+        self.ax = AttrDict()
+        self.ax['ave'] = self.fig.add_subplot(121)
+        self.ax['cap'] = self.fig.add_subplot(122)
+        title = self.ax['ave'].set_title(self.timestamp, size="medium", y=1.02)
+        title = self.ax['cap'].set_title(self.timestamp, size="medium", y=1.02)
+
+
+ls_dsh = Longscan_daqspectrumheight(instruments=instruments);
+ls_dsh.run(xs=xs,zs=zs,vs=vs,cs=cs);
+
+# Mon, 12 Jun 2017 01:31:18
+get_ipython().magic('load qtconsole/2017/06/setups/longscan_daqspectrum_original.py')
+# Mon, 12 Jun 2017 01:31:19
+# %load qtconsole/2017/06/setups/longscan_daqspectrum_original.py
+# daqspectrum height series across a feature
+
+#zs = np.array([50,100,180,200]);
+#xs = np.linspace(150,250,20);
+zs = np.array([50,100,180,200]);
+xs = np.linspace(160,360,6);
+
+vs = np.outer(zs,xs);
+cs = np.outer(zs,xs);
+
+
+for x in range(len(xs)):
+    for z in range(len(zs)):
+        pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[z]});
+        spectrum = spectrum = DaqSpectrum(instruments, measure_time=.10, 
+                                          annotate_notes=True);
+        spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+        spectrum.run()
+        vs[z][x] = np.mean(spectrum.V)
+        cs[z][x] = instruments['lockin_cap'].R;
+        plt.close('all');
+    pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[0]});
+
+from Nowack_Lab.Utilities.utilities import AttrDict
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+
+class Longscan_daqspectrumheight(Measurement):
+    def __init__(self, instruments):
+        super().__init__(instruments=instruments);
+    def do(self, xs=[], zs=[], vs=[], cs=[]):
+        self.xs = xs;
+        self.zs = zs;
+        self.vs = vs;
+        self.cs = cs;
+        self.plot();
+        return;
+    def plot(self):
+        super().plot();
+        image = self.ax['ave'].imshow(vs, cmap='viridis', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['ave'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('average value', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-2,2))
+
+        image = self.ax['cap'].imshow(cs, cmap='inferno', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['cap'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('capacitance', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-8,6))
+
+        self.ax['ave'].set_xlabel('x');
+        self.ax['ave'].set_ylabel('z');
+        self.ax['cap'].set_xlabel('x');
+        self.ax['cap'].set_ylabel('z');
+    def setup_plots(self):
+        self.fig = plt.figure(figsize=(12,6))
+        self.ax = AttrDict()
+        self.ax['ave'] = self.fig.add_subplot(121)
+        self.ax['cap'] = self.fig.add_subplot(122)
+        title = self.ax['ave'].set_title(self.timestamp, size="medium", y=1.02)
+        title = self.ax['cap'].set_title(self.timestamp, size="medium", y=1.02)
+
+
+ls_dsh = Longscan_daqspectrumheight(instruments=instruments);
+ls_dsh.run(xs=xs,zs=zs,vs=vs,cs=cs);
+
+# Mon, 12 Jun 2017 01:43:02
+s.reset()
+# Mon, 12 Jun 2017 01:43:06
+s.tune()
+# Mon, 12 Jun 2017 01:43:12
+s.sensitivity
+#[Out]# 'Med'
+# Mon, 12 Jun 2017 01:43:15
+s.reset
+#[Out]# <bound method PFL102.reset of <Nowack_Lab.Instruments.squidarray.SquidArray object at 0x000000000E9A17B8>>
+# Mon, 12 Jun 2017 01:43:17
+s.reset()
+# Mon, 12 Jun 2017 01:43:24
+s.S_bias
+#[Out]# 450.0
+# Mon, 12 Jun 2017 01:43:26
+s.S_flux
+#[Out]# 0.0
+# Mon, 12 Jun 2017 01:43:42
+pz.zero
+#[Out]# <bound method Piezos.zero of <Nowack_Lab.Instruments.piezos.Piezos object at 0x000000000E9834A8>>
+# Mon, 12 Jun 2017 01:43:43
+pz.zero()
+# Mon, 12 Jun 2017 01:43:51
+s.reset()
+# Mon, 12 Jun 2017 01:43:54
+s.tune()
+# Mon, 12 Jun 2017 01:44:13
+s = SquidArray(visaResource='COM1')
+# Mon, 12 Jun 2017 01:44:42
+s.tune()
+# Mon, 12 Jun 2017 01:45:16
+s.reset()
+# Mon, 12 Jun 2017 01:45:22
+s.sensitivity = 'Med'
+# Mon, 12 Jun 2017 01:45:26
+s.reset()
+# Mon, 12 Jun 2017 01:45:29
+s.tune()
+# Mon, 12 Jun 2017 01:45:33
+s.tune()
+# Mon, 12 Jun 2017 01:47:00
+s.reset()
+# Mon, 12 Jun 2017 01:47:04
+s.S_bias
+#[Out]# 430.0
+# Mon, 12 Jun 2017 01:47:13
+s.unlock
+#[Out]# <bound method PFL102.unlock of <Nowack_Lab.Instruments.squidarray.SquidArray object at 0x0000000010A1CB38>>
+# Mon, 12 Jun 2017 01:47:14
+s.unlock()
+# Mon, 12 Jun 2017 01:47:34
+s.lock('array')
+# Mon, 12 Jun 2017 01:47:38
+s.reset()
+# Mon, 12 Jun 2017 01:47:44
+s.lock('squid')
+# Mon, 12 Jun 2017 01:47:49
+s.reset()
+# Mon, 12 Jun 2017 01:47:54
+s.S_bias
+#[Out]# 430.0
+# Mon, 12 Jun 2017 01:47:57
+s.S_flux
+#[Out]# 0
+# Mon, 12 Jun 2017 01:48:14
+s.reset()
+# Mon, 12 Jun 2017 01:48:18
+s.
+# Mon, 12 Jun 2017 01:48:23
+s.__getstate__
+#[Out]# <bound method PFL102.__getstate__ of <Nowack_Lab.Instruments.squidarray.SquidArray object at 0x0000000010A1CB38>>
+# Mon, 12 Jun 2017 01:48:24
+s.__getstate__()
+#[Out]# {'Array bias': 46.0,
+#[Out]#  'Array flux': 30.0,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '10kOhm',
+#[Out]#  'Integrator capacitor': '15nF',
+#[Out]#  'Preamp voltage offset': 0.1819,
+#[Out]#  'SQUID bias': 430.0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': True,
+#[Out]#  'Test input': 'S_flux',
+#[Out]#  'Test signal': 'Auto',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'Med'}
+# Mon, 12 Jun 2017 01:48:52
+instruments['squidarray']
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xe9a17b8>
+# Mon, 12 Jun 2017 01:48:55
+instruments['squidarray'] = s
+# Mon, 12 Jun 2017 01:49:03
+get_ipython().magic('load qtconsole/2017/06/setups/longscan_daqspectrum_original.py')
+# Mon, 12 Jun 2017 01:49:04
+# %load qtconsole/2017/06/setups/longscan_daqspectrum_original.py
+# daqspectrum height series across a feature
+
+#zs = np.array([50,100,180,200]);
+#xs = np.linspace(150,250,20);
+zs = np.array([50,100,180,200]);
+xs = np.linspace(160,360,6);
+
+vs = np.outer(zs,xs);
+cs = np.outer(zs,xs);
+
+
+for x in range(len(xs)):
+    for z in range(len(zs)):
+        pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[z]});
+        spectrum = spectrum = DaqSpectrum(instruments, measure_time=.10, 
+                                          annotate_notes=True);
+        spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+        spectrum.run()
+        vs[z][x] = np.mean(spectrum.V)
+        cs[z][x] = instruments['lockin_cap'].R;
+        plt.close('all');
+    pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[0]});
+
+from Nowack_Lab.Utilities.utilities import AttrDict
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+
+class Longscan_daqspectrumheight(Measurement):
+    def __init__(self, instruments):
+        super().__init__(instruments=instruments);
+    def do(self, xs=[], zs=[], vs=[], cs=[]):
+        self.xs = xs;
+        self.zs = zs;
+        self.vs = vs;
+        self.cs = cs;
+        self.plot();
+        return;
+    def plot(self):
+        super().plot();
+        image = self.ax['ave'].imshow(vs, cmap='viridis', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['ave'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('average value', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-2,2))
+
+        image = self.ax['cap'].imshow(cs, cmap='inferno', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['cap'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('capacitance', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-8,6))
+
+        self.ax['ave'].set_xlabel('x');
+        self.ax['ave'].set_ylabel('z');
+        self.ax['cap'].set_xlabel('x');
+        self.ax['cap'].set_ylabel('z');
+    def setup_plots(self):
+        self.fig = plt.figure(figsize=(12,6))
+        self.ax = AttrDict()
+        self.ax['ave'] = self.fig.add_subplot(121)
+        self.ax['cap'] = self.fig.add_subplot(122)
+        title = self.ax['ave'].set_title(self.timestamp, size="medium", y=1.02)
+        title = self.ax['cap'].set_title(self.timestamp, size="medium", y=1.02)
+
+
+ls_dsh = Longscan_daqspectrumheight(instruments=instruments);
+ls_dsh.run(xs=xs,zs=zs,vs=vs,cs=cs);
+
+# Mon, 12 Jun 2017 01:57:33
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0x10a1cb38>
+# Mon, 12 Jun 2017 01:57:36
+s.reset()
+# Mon, 12 Jun 2017 01:57:42
+s.tune
+#[Out]# <bound method SquidArray.tune of <Nowack_Lab.Instruments.squidarray.SquidArray object at 0x0000000010A1CB38>>
+# Mon, 12 Jun 2017 01:57:44
+s.tune()
+# Mon, 12 Jun 2017 01:58:01
+s.reset()
+# Mon, 12 Jun 2017 01:58:05
+s.tune()
+# Mon, 12 Jun 2017 01:59:06
+# %load qtconsole/2017/06/setups/longscan_daqspectrum_original.py
+# daqspectrum height series across a feature
+
+#zs = np.array([50,100,180,200]);
+#xs = np.linspace(150,250,20);
+zs = np.array([50,100,180,200]);
+xs = np.linspace(160,360,6);
+
+vs = np.outer(zs,xs);
+cs = np.outer(zs,xs);
+
+
+for x in range(len(xs)):
+    for z in range(len(zs)):
+        pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[z]});
+        spectrum = spectrum = DaqSpectrum(instruments, measure_time=.10, 
+                                          annotate_notes=True);
+        spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
+                    int(pz.x.V), int(pz.z.V));
+        spectrum.run()
+        vs[z][x] = np.mean(spectrum.V)
+        cs[z][x] = instruments['lockin_cap'].R;
+        plt.close('all');
+    pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[0]});
+
+from Nowack_Lab.Utilities.utilities import AttrDict
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+
+class Longscan_daqspectrumheight(Measurement):
+    def __init__(self, instruments):
+        super().__init__(instruments=instruments);
+    def do(self, xs=[], zs=[], vs=[], cs=[]):
+        self.xs = xs;
+        self.zs = zs;
+        self.vs = vs;
+        self.cs = cs;
+        self.plot();
+        return;
+    def plot(self):
+        super().plot();
+        image = self.ax['ave'].imshow(vs, cmap='viridis', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['ave'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('average value', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-2,2))
+
+        image = self.ax['cap'].imshow(cs, cmap='inferno', origin='upper',
+                                extent = [self.xs.min(), self.xs.max(),
+                                          self.zs.max(), self.zs.min()]
+        );
+        d = make_axes_locatable(self.ax['cap'])
+        cax = d.append_axes("right", size=0.1, pad=0.1)
+        cbar = plt.colorbar(image, cax=cax)
+        cbar.set_label('capacitance', rotation=270, labelpad=12)
+        cbar.formatter.set_powerlimits((-8,6))
+
+        self.ax['ave'].set_xlabel('x');
+        self.ax['ave'].set_ylabel('z');
+        self.ax['cap'].set_xlabel('x');
+        self.ax['cap'].set_ylabel('z');
+    def setup_plots(self):
+        self.fig = plt.figure(figsize=(12,6))
+        self.ax = AttrDict()
+        self.ax['ave'] = self.fig.add_subplot(121)
+        self.ax['cap'] = self.fig.add_subplot(122)
+        title = self.ax['ave'].set_title(self.timestamp, size="medium", y=1.02)
+        title = self.ax['cap'].set_title(self.timestamp, size="medium", y=1.02)
+
+
+ls_dsh = Longscan_daqspectrumheight(instruments=instruments);
+ls_dsh.run(xs=xs,zs=zs,vs=vs,cs=cs);
+
+# Mon, 12 Jun 2017 02:14:34
+s.tune()

@@ -1,0 +1,19 @@
+{
+    "py/object": "Nowack_Lab.Instruments.squidarray.SquidArray",
+    "py/state": {
+        "Array bias": 60,
+        "Array flux": 60,
+        "Array locked": false,
+        "Feedback resistor": "10kOhm",
+        "Integrator capacitor": "15nF",
+        "Preamp voltage offset": 0.95,
+        "SQUID bias": 450,
+        "SQUID flux": 100,
+        "SQUID locked": true,
+        "Test input": "S_flux",
+        "Test signal": "On",
+        "channel": 1,
+        "resetIntegrator": false,
+        "sensitivity": "Med"
+    }
+}

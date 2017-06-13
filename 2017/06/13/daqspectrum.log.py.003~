@@ -1,16 +1,13 @@
 # IPython log file
 
-get_ipython().magic('load qtconsole/2017/06/setups/startlog_20170608.py')
-# Sat, 10 Jun 2017 00:31:22
-get_ipython().magic('load qtconsole/2017/06/setups/main_20170608.py')
-# Sat, 10 Jun 2017 00:31:29
+# Tue, 13 Jun 2017 21:10:42
 # %load qtconsole/2017/06/setups/main_20170608.py
 ### Setup script main, load me and modify
 ### Author: david low (dhl88)
 
 get_ipython().magic('matplotlib qt5')
 get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170606.py')
-pf = Planefit.load(instruments=instruments)
+# pf = Planefit.load(instruments=instruments)
 # %run -i qtconsole/2017/06/setups/longscan_daqspectrum.py
 
 # 2017-06-07T15:31 reproduced this error with just this code

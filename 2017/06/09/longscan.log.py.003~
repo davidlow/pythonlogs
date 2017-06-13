@@ -1,9 +1,8 @@
 # IPython log file
 
-get_ipython().magic('load qtconsole/2017/06/setups/startlog_20170608.py')
-# Sat, 10 Jun 2017 00:31:22
+# Fri, 09 Jun 2017 05:11:13
 get_ipython().magic('load qtconsole/2017/06/setups/main_20170608.py')
-# Sat, 10 Jun 2017 00:31:29
+# Fri, 09 Jun 2017 05:11:17
 # %load qtconsole/2017/06/setups/main_20170608.py
 ### Setup script main, load me and modify
 ### Author: david low (dhl88)

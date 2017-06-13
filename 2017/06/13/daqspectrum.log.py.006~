@@ -1,0 +1,396 @@
+# IPython log file
+
+# Tue, 13 Jun 2017 20:40:08
+# %load qtconsole/2017/06/setups/main_20170608.py
+### Setup script main, load me and modify
+### Author: david low (dhl88)
+
+get_ipython().magic('matplotlib qt5')
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170606.py')
+# pf = Planefit.load(instruments=instruments)
+# %run -i qtconsole/2017/06/setups/longscan_daqspectrum.py
+
+# 2017-06-07T15:31 reproduced this error with just this code
+
+# Tue, 13 Jun 2017 20:40:20
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xc63d0f0>
+# Tue, 13 Jun 2017 20:40:24
+s.reset()
+# Tue, 13 Jun 2017 20:40:37
+s = SquidArray(visaResource='COM1')
+# Tue, 13 Jun 2017 20:40:52
+s.A_bias = 60
+# Tue, 13 Jun 2017 20:40:56
+s.reset
+#[Out]# <bound method PFL102.reset of <Nowack_Lab.Instruments.squidarray.SquidArray object at 0x000000000C63DE10>>
+# Tue, 13 Jun 2017 20:40:59
+s.reset()
+# Tue, 13 Jun 2017 20:41:19
+s.__getstate__()
+#[Out]# {'Array bias': 60,
+#[Out]#  'Array flux': 0,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0,
+#[Out]#  'SQUID bias': 0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': False,
+#[Out]#  'Test input': 'A_flux',
+#[Out]#  'Test signal': 'Auto',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
+# Tue, 13 Jun 2017 20:41:38
+s._visaResource
+#[Out]# 'COM1'
+# Tue, 13 Jun 2017 20:42:19
+s.testSignal = 'On'
+# Tue, 13 Jun 2017 20:42:43
+s.A_bias = 0
+# Tue, 13 Jun 2017 20:42:46
+s.A_bias = 40
+# Tue, 13 Jun 2017 20:42:49
+s.A_bias = 60
+# Tue, 13 Jun 2017 20:43:44
+s.reset()
+# Tue, 13 Jun 2017 20:43:58
+s.offset = .9
+# Tue, 13 Jun 2017 20:44:14
+s.offset = .95
+# Tue, 13 Jun 2017 20:44:20
+s.lock('Array')
+# Tue, 13 Jun 2017 20:44:37
+s.testInput('S_flux')
+# Tue, 13 Jun 2017 20:44:45
+s.testInput = 'S_flux'
+# Tue, 13 Jun 2017 20:44:49
+s.reset()
+# Tue, 13 Jun 2017 20:47:03
+s.S_bias
+#[Out]# 0
+# Tue, 13 Jun 2017 20:47:05
+s.S_bias = 1
+# Tue, 13 Jun 2017 20:47:07
+s.S_bias = 10
+# Tue, 13 Jun 2017 20:47:10
+s.S_bias = 5
+# Tue, 13 Jun 2017 20:47:13
+s.S_bias = 4.5
+# Tue, 13 Jun 2017 20:47:16
+s.S_bias = 4.8
+# Tue, 13 Jun 2017 20:47:33
+s.S_bias = 0
+# Tue, 13 Jun 2017 20:47:40
+s.__getstate__()
+#[Out]# {'Array bias': 60,
+#[Out]#  'Array flux': 0,
+#[Out]#  'Array locked': True,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0.95,
+#[Out]#  'SQUID bias': 0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': False,
+#[Out]#  'Test input': 'S_flux',
+#[Out]#  'Test signal': 'On',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
+# Tue, 13 Jun 2017 20:47:55
+s.A_flux
+#[Out]# 0
+# Tue, 13 Jun 2017 20:47:57
+s.A_flux=1
+# Tue, 13 Jun 2017 20:48:00
+s.A_flux=2
+# Tue, 13 Jun 2017 20:48:03
+s.A_flux=3
+# Tue, 13 Jun 2017 20:48:21
+s.S_bias=450
+# Tue, 13 Jun 2017 20:48:23
+s.reset()
+# Tue, 13 Jun 2017 20:48:43
+s.reset()
+# Tue, 13 Jun 2017 20:48:45
+s.reset()
+# Tue, 13 Jun 2017 20:49:09
+s.A_flux
+#[Out]# 3
+# Tue, 13 Jun 2017 20:49:12
+s.A_flux = 4
+# Tue, 13 Jun 2017 20:49:14
+s.A_flux = 2
+# Tue, 13 Jun 2017 20:49:22
+s.A_flux = 1
+# Tue, 13 Jun 2017 20:49:25
+s.reset()
+# Tue, 13 Jun 2017 20:49:29
+s.A_flux = 10
+# Tue, 13 Jun 2017 20:49:33
+s.A_flux = 11
+# Tue, 13 Jun 2017 20:49:38
+s.A_flux = 12
+# Tue, 13 Jun 2017 20:49:43
+s.A_flux = 13
+# Tue, 13 Jun 2017 20:49:51
+s.S_flux
+#[Out]# 0
+# Tue, 13 Jun 2017 20:49:53
+s.S_flux = 2
+# Tue, 13 Jun 2017 20:49:55
+s.S_flux = 10
+# Tue, 13 Jun 2017 20:49:57
+s.S_flux = 15
+# Tue, 13 Jun 2017 20:50:01
+s.S_flux = 18
+# Tue, 13 Jun 2017 20:50:05
+s.S_flux = 20
+# Tue, 13 Jun 2017 20:50:07
+s.S_flux = 25
+# Tue, 13 Jun 2017 20:50:16
+s.lock('Squid')
+# Tue, 13 Jun 2017 20:50:19
+s.reset()
+# Tue, 13 Jun 2017 20:50:21
+s.reset()
+# Tue, 13 Jun 2017 20:50:21
+s.reset()
+# Tue, 13 Jun 2017 20:50:22
+s.reset()
+# Tue, 13 Jun 2017 20:50:29
+s.S_flux
+#[Out]# 25
+# Tue, 13 Jun 2017 20:50:39
+s.S_bias
+#[Out]# 450
+# Tue, 13 Jun 2017 20:50:45
+s.S_flux = 100
+# Tue, 13 Jun 2017 20:50:57
+s.testSignal = 'Off'
+# Tue, 13 Jun 2017 20:51:06
+s.save()
+# Tue, 13 Jun 2017 20:52:34
+s.param_filename
+#[Out]# 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Instruments\\squidarray_params.json'
+# Tue, 13 Jun 2017 21:00:11
+get_ipython().magic('load qtconsole/2017/06/setups/daqspectrum_singlewithnotes.py')
+# Tue, 13 Jun 2017 21:00:14
+# %load qtconsole/2017/06/setups/daqspectrum_singlewithnotes.py
+spectrum = DaqSpectrum(instruments=instruments, 
+						measure_time=1, 
+						annotate_notes=True,
+						preamp_gain_override=True,
+						preamp_filter_override=True,
+						preamp_dccouple_override=True
+			)
+pzvals = pz.V;
+spectrum.notes = '''short scan, 
+[x,y,z] = [{0:d},{1:d},{2:d}]
+[c, c0] = [{3:2.2e}, {4:2.2e}]
+[gain, filter f] = [{5:d}, {6:2.2e}]
+[time, averages] = [{7:2.2f}, {8:d}]
+[A_bias, A_flux, S_bias, S_flux] = [{9:2.2f}, {10:2.2f}, {11:2.2f}, {12:2.2f}]
+[Alocked, Slocked, sensitivity] = [{13}, {14}, {15}]
+[units, conversion] = [{16},{17:2.4f}]
+'''.format(int(pzvals['x']), 
+           int(pzvals['y']), 
+           int(pzvals['z']),
+           instruments['lockin_cap'].R,
+           CAP_I,
+           instruments['preamp'].gain,
+           instruments['preamp'].filter[1],
+           spectrum.measure_time,
+           spectrum.averages,
+           instruments['squidarray'].A_bias,
+           instruments['squidarray'].A_flux,
+           instruments['squidarray'].S_bias,
+           instruments['squidarray'].S_flux,
+           instruments['squidarray'].__getstate__()['Array locked'],
+           instruments['squidarray'].__getstate__()['SQUID locked'],
+           instruments['squidarray'].__getstate__()['sensitivity'],
+           spectrum.units,
+           spectrum.conversion
+);
+spectrum.run()
+
+# Tue, 13 Jun 2017 21:00:25
+CAP_I = instruments['lockin_cap'].R
+# Tue, 13 Jun 2017 21:00:28
+CAP_I
+#[Out]# 1.01701e-06
+# Tue, 13 Jun 2017 21:00:33
+# %load qtconsole/2017/06/setups/daqspectrum_singlewithnotes.py
+spectrum = DaqSpectrum(instruments=instruments, 
+						measure_time=1, 
+						annotate_notes=True,
+						preamp_gain_override=True,
+						preamp_filter_override=True,
+						preamp_dccouple_override=True
+			)
+pzvals = pz.V;
+spectrum.notes = '''short scan, 
+[x,y,z] = [{0:d},{1:d},{2:d}]
+[c, c0] = [{3:2.2e}, {4:2.2e}]
+[gain, filter f] = [{5:d}, {6:2.2e}]
+[time, averages] = [{7:2.2f}, {8:d}]
+[A_bias, A_flux, S_bias, S_flux] = [{9:2.2f}, {10:2.2f}, {11:2.2f}, {12:2.2f}]
+[Alocked, Slocked, sensitivity] = [{13}, {14}, {15}]
+[units, conversion] = [{16},{17:2.4f}]
+'''.format(int(pzvals['x']), 
+           int(pzvals['y']), 
+           int(pzvals['z']),
+           instruments['lockin_cap'].R,
+           CAP_I,
+           instruments['preamp'].gain,
+           instruments['preamp'].filter[1],
+           spectrum.measure_time,
+           spectrum.averages,
+           instruments['squidarray'].A_bias,
+           instruments['squidarray'].A_flux,
+           instruments['squidarray'].S_bias,
+           instruments['squidarray'].S_flux,
+           instruments['squidarray'].__getstate__()['Array locked'],
+           instruments['squidarray'].__getstate__()['SQUID locked'],
+           instruments['squidarray'].__getstate__()['sensitivity'],
+           spectrum.units,
+           spectrum.conversion
+);
+spectrum.run()
+
+# Tue, 13 Jun 2017 21:01:28
+# %load qtconsole/2017/06/setups/daqspectrum_singlewithnotes.py
+spectrum = DaqSpectrum(instruments=instruments, 
+						measure_time=1, 
+						annotate_notes=True,
+						preamp_gain_override=True,
+						preamp_filter_override=True,
+						preamp_dccouple_override=True
+			)
+pzvals = pz.V;
+spectrum.notes = '''short scan, 
+[x,y,z] = [{0:d},{1:d},{2:d}]
+[c, c0] = [{3:2.2e}, {4:2.2e}]
+[gain, filter f] = [{5:d}, {6:2.2e}]
+[time, averages] = [{7:2.2f}, {8:d}]
+[A_bias, A_flux, S_bias, S_flux] = [{9:2.2f}, {10:2.2f}, {11:2.2f}, {12:2.2f}]
+[Alocked, Slocked, sensitivity] = [{13}, {14}, {15}]
+[units, conversion] = [{16},{17:2.4f}]
+'''.format(int(pzvals['x']), 
+           int(pzvals['y']), 
+           int(pzvals['z']),
+           instruments['lockin_cap'].R,
+           CAP_I,
+           instruments['preamp'].gain,
+           instruments['preamp'].filter[1],
+           spectrum.measure_time,
+           spectrum.averages,
+           instruments['squidarray'].A_bias,
+           instruments['squidarray'].A_flux,
+           instruments['squidarray'].S_bias,
+           instruments['squidarray'].S_flux,
+           instruments['squidarray'].__getstate__()['Array locked'],
+           instruments['squidarray'].__getstate__()['SQUID locked'],
+           instruments['squidarray'].__getstate__()['sensitivity'],
+           spectrum.units,
+           spectrum.conversion
+);
+spectrum.run()
+
+# Tue, 13 Jun 2017 21:01:44
+from importlib import reload
+# Tue, 13 Jun 2017 21:01:58
+from Nowack_Lab.Procedures import daqspectrum
+# Tue, 13 Jun 2017 21:02:05
+# %load qtconsole/2017/06/setups/daqspectrum_singlewithnotes.py
+spectrum = DaqSpectrum(instruments=instruments, 
+						measure_time=1, 
+						annotate_notes=True,
+						preamp_gain_override=True,
+						preamp_filter_override=True,
+						preamp_dccouple_override=True
+			)
+pzvals = pz.V;
+spectrum.notes = '''short scan, 
+[x,y,z] = [{0:d},{1:d},{2:d}]
+[c, c0] = [{3:2.2e}, {4:2.2e}]
+[gain, filter f] = [{5:d}, {6:2.2e}]
+[time, averages] = [{7:2.2f}, {8:d}]
+[A_bias, A_flux, S_bias, S_flux] = [{9:2.2f}, {10:2.2f}, {11:2.2f}, {12:2.2f}]
+[Alocked, Slocked, sensitivity] = [{13}, {14}, {15}]
+[units, conversion] = [{16},{17:2.4f}]
+'''.format(int(pzvals['x']), 
+           int(pzvals['y']), 
+           int(pzvals['z']),
+           instruments['lockin_cap'].R,
+           CAP_I,
+           instruments['preamp'].gain,
+           instruments['preamp'].filter[1],
+           spectrum.measure_time,
+           spectrum.averages,
+           instruments['squidarray'].A_bias,
+           instruments['squidarray'].A_flux,
+           instruments['squidarray'].S_bias,
+           instruments['squidarray'].S_flux,
+           instruments['squidarray'].__getstate__()['Array locked'],
+           instruments['squidarray'].__getstate__()['SQUID locked'],
+           instruments['squidarray'].__getstate__()['sensitivity'],
+           spectrum.units,
+           spectrum.conversion
+);
+spectrum.run()
+
+# Tue, 13 Jun 2017 21:02:12
+reload(daqspectrum)
+#[Out]# <module 'Nowack_Lab.Procedures.daqspectrum' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Procedures\\daqspectrum.py'>
+# Tue, 13 Jun 2017 21:02:17
+# %load qtconsole/2017/06/setups/daqspectrum_singlewithnotes.py
+spectrum = DaqSpectrum(instruments=instruments, 
+						measure_time=1, 
+						annotate_notes=True,
+						preamp_gain_override=True,
+						preamp_filter_override=True,
+						preamp_dccouple_override=True
+			)
+pzvals = pz.V;
+spectrum.notes = '''short scan, 
+[x,y,z] = [{0:d},{1:d},{2:d}]
+[c, c0] = [{3:2.2e}, {4:2.2e}]
+[gain, filter f] = [{5:d}, {6:2.2e}]
+[time, averages] = [{7:2.2f}, {8:d}]
+[A_bias, A_flux, S_bias, S_flux] = [{9:2.2f}, {10:2.2f}, {11:2.2f}, {12:2.2f}]
+[Alocked, Slocked, sensitivity] = [{13}, {14}, {15}]
+[units, conversion] = [{16},{17:2.4f}]
+'''.format(int(pzvals['x']), 
+           int(pzvals['y']), 
+           int(pzvals['z']),
+           instruments['lockin_cap'].R,
+           CAP_I,
+           instruments['preamp'].gain,
+           instruments['preamp'].filter[1],
+           spectrum.measure_time,
+           spectrum.averages,
+           instruments['squidarray'].A_bias,
+           instruments['squidarray'].A_flux,
+           instruments['squidarray'].S_bias,
+           instruments['squidarray'].S_flux,
+           instruments['squidarray'].__getstate__()['Array locked'],
+           instruments['squidarray'].__getstate__()['SQUID locked'],
+           instruments['squidarray'].__getstate__()['sensitivity'],
+           spectrum.units,
+           spectrum.conversion
+);
+spectrum.run()
+
+# Tue, 13 Jun 2017 21:03:12
+reload(daqspectrum)
+#[Out]# <module 'Nowack_Lab.Procedures.daqspectrum' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Procedures\\daqspectrum.py'>
+# Tue, 13 Jun 2017 21:03:33
+from reload(daqspectrum) import DaqSpectrum
+# Tue, 13 Jun 2017 21:03:49
+DaqSpectrum
+#[Out]# Nowack_Lab.Procedures.daqspectrum.DaqSpectrum
+# Tue, 13 Jun 2017 21:03:56
+daqspectrum
+#[Out]# <module 'Nowack_Lab.Procedures.daqspectrum' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Procedures\\daqspectrum.py'>

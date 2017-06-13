@@ -1,0 +1,136 @@
+# IPython log file
+
+# Fri, 09 Jun 2017 05:19:57
+get_ipython().magic('load qtconsole/2017/06/setups/main_20170608.py')
+# Fri, 09 Jun 2017 05:20:00
+# %load qtconsole/2017/06/setups/main_20170608.py
+### Setup script main, load me and modify
+### Author: david low (dhl88)
+
+get_ipython().magic('matplotlib qt5')
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170606.py')
+pf = Planefit.load(instruments=instruments)
+# %run -i qtconsole/2017/06/setups/longscan_daqspectrum.py
+
+# 2017-06-07T15:31 reproduced this error with just this code
+
+# Fri, 09 Jun 2017 05:20:24
+get_ipython().magic('load qtconsole/2017/06/setups/quickscan_20170609.py')
+# Fri, 09 Jun 2017 05:20:39
+get_ipython().magic('load qtconsole/2017/06/setups/quickscan_20170609.py')
+# Fri, 09 Jun 2017 05:20:56
+get_ipython().magic('load qtconsole/2017/06/setups/quickscan_20170609.py')
+# Fri, 09 Jun 2017 05:20:58
+# %load qtconsole/2017/06/setups/quickscan_20170609.py
+plt.close('all')
+sc = Scanplane(instruments,pf,span=[800,800], center=[0,0], numpts=[2000,27],scan_rate=100, scanheight=15)
+sc.notes = '''
+[dhl88]  Quick scan for testing scanning
+'''
+sc.run()
+
+# Fri, 09 Jun 2017 05:30:07
+get_ipython().magic('load qtconsole/2017/06/setups/longscan_20170609.py')
+# Fri, 09 Jun 2017 05:31:30
+# %load qtconsole/2017/06/setups/longscan_20170609.py
+plt.close('all')
+sc = Scanplane(instruments,pf,span=[800,800], center=[0,0], numpts=[2000,900],scan_rate=20, scanheight=15)
+sc.notes = '''
+[dhl88]  Long scan.  I want a good image to compare with 10 mK
+
+Set for 10 hr at close to touching height
+'''
+sc.run()
+
+# Fri, 09 Jun 2017 19:24:47
+td = Touchdown(instruments, planescan=True)
+# Fri, 09 Jun 2017 19:25:37
+td.notes = '''[dhl88] moved z attocube down a little manually
+5 sec at 50Hz in the (+) direction
+'''
+# Fri, 09 Jun 2017 19:25:40
+td.run()
+# Fri, 09 Jun 2017 19:44:46
+atto.z.step(50)
+# Fri, 09 Jun 2017 19:45:14
+td.notes = '''[dhl88] moved z attocube down by 50 attosteps
+'''
+# Fri, 09 Jun 2017 19:45:17
+td.run()
+# Fri, 09 Jun 2017 19:45:32
+td = Touchdown(instruments, planescan=True)
+# Fri, 09 Jun 2017 19:45:35
+td.notes = '''[dhl88] moved z attocube down by 50 attosteps
+'''
+# Fri, 09 Jun 2017 19:45:37
+td.run()
+# Fri, 09 Jun 2017 19:54:21
+td = Touchdown(instruments, planescan=True)
+# Fri, 09 Jun 2017 19:54:27
+td.notes = '''[dhl88] moved z attocube down by 50 attosteps
+'''
+# Fri, 09 Jun 2017 19:54:33
+atto.z.step(50)
+# Fri, 09 Jun 2017 19:54:37
+td.run()
+# Fri, 09 Jun 2017 20:01:59
+pz.zero()
+# Fri, 09 Jun 2017 20:02:28
+s.reset()
+# Fri, 09 Jun 2017 20:02:36
+s.sensitivity
+#[Out]# 'Med'
+# Fri, 09 Jun 2017 21:54:10
+td = Touchdown(instruments, planescan=True)
+# Fri, 09 Jun 2017 21:54:39
+td.notes = '''[dhl88] at 50 mK.  Looks stable, taking a touchdown
+'''
+# Fri, 09 Jun 2017 21:54:46
+td.run()
+# Fri, 09 Jun 2017 21:57:40
+atto.z.step(-50)
+# Fri, 09 Jun 2017 22:08:36
+td.notes = '''[dhl88] 50 mK, moved attocubes -50 z
+'''
+# Fri, 09 Jun 2017 22:08:45
+td = Touchdown(instruments, planescan=True)
+# Fri, 09 Jun 2017 22:08:47
+td.notes = '''[dhl88] 50 mK, moved attocubes -50 z
+'''
+# Fri, 09 Jun 2017 22:08:51
+td.run()
+# Fri, 09 Jun 2017 22:12:40
+pz.z.sweep(pz.z.V, -pz.z.Vmax); atto.z.step(-100)
+# Fri, 09 Jun 2017 22:12:45
+td = Touchdown(instruments, planescan=True)
+# Fri, 09 Jun 2017 22:12:52
+td.notes = '''[dhl88] 50 mK, moved attocubes -100 z
+'''
+# Fri, 09 Jun 2017 22:13:01
+td.run()
+# Fri, 09 Jun 2017 22:16:19
+td = Touchdown(instruments)
+# Fri, 09 Jun 2017 22:16:40
+td.notes = '''[dhl88] 50 mK, running normal touchdown to center z attocube'''
+# Fri, 09 Jun 2017 22:16:42
+td.run()
+# Fri, 09 Jun 2017 22:25:22
+td = Touchdown(instruments, planescan=True)
+# Fri, 09 Jun 2017 22:25:42
+td.notes='''[dhl88] ran right through the td ... bug in code? '''
+# Fri, 09 Jun 2017 22:25:46
+td.run()
+# Fri, 09 Jun 2017 22:26:53
+td = Touchdown(instruments, planescan=True)
+# Fri, 09 Jun 2017 22:26:54
+td.notes='''[dhl88] ran right through the td ... bug in code? '''
+# Fri, 09 Jun 2017 22:27:11
+td.notes='''[dhl88] did not register td at 0V, bug? '''
+# Fri, 09 Jun 2017 22:27:14
+td.run()
+# Fri, 09 Jun 2017 22:29:30
+pf = Planefit(instruments)
+# Fri, 09 Jun 2017 22:29:34
+pf.run()
+# Sat, 10 Jun 2017 00:29:32
+exit()
