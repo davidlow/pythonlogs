@@ -66,9 +66,10 @@ class Longscan_daqspectrumheight(Measurement):
                          'spectrum_f':  spectrum.f,
                          'spectrum_V':  spectrum.V,
                          'spectrum_psdave': spectrum.psdAve,
-                         'spectrum_name': 'filename' #FIXME
+                         'spectrum_name': 'filename', #FIXME
+                         'spectrum_mean': np.mean(spectrum.V),
                         }
-                    )
+                    )# will this even save correctly????
                 pz.sweep(pz.V, {'x':xs[x], 'y':ys[y], 'z':-pz.z.Vmax});
         self.plot();
         return;

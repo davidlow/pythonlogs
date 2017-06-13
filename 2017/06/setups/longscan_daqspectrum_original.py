@@ -1,7 +1,9 @@
 # daqspectrum height series across a feature
 
+#zs = np.array([50,100,180,200]);
+#xs = np.linspace(150,250,20);
 zs = np.array([50,100,180,200]);
-xs = np.linspace(150,250,20);
+xs = np.linspace(150,325,6);
 
 vs = np.outer(zs,xs);
 cs = np.outer(zs,xs);
@@ -10,7 +12,7 @@ cs = np.outer(zs,xs);
 for x in range(len(xs)):
     for z in range(len(zs)):
         pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[z]});
-        spectrum = spectrum = DaqSpectrum(instruments, measure_time=10, 
+        spectrum = spectrum = DaqSpectrum(instruments, measure_time=.10, 
                                           annotate_notes=True);
         spectrum.notes = "[dhl88] In contact, moving\nx={0:d}, z={1:d}".format(
                     int(pz.x.V), int(pz.z.V));
@@ -18,58 +20,20 @@ for x in range(len(xs)):
         vs[z][x] = np.mean(spectrum.V)
         cs[z][x] = instruments['lockin_cap'].R;
         plt.close('all');
+        instruments['squidarray'].reset()
     pz.sweep(pz.V, {'x':xs[x], 'y':0, 'z':zs[0]});
 
 from Nowack_Lab.Utilities.utilities import AttrDict
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 class Longscan_daqspectrumheight(Measurement):
-
-    def __init__(self, instruments
-                zs = np.array([50,100,180,200]),
-                ys = np.array([0]),
-                xs = np.linspace(150,250,20),
-                measure_time = 10):
-    '''
-    Arguments:
-    instruments
-        'piezos':   Piezos object
-    xs              x piezo voltages, numpy array
-    ys              y piezo voltages, numpy array  
-    zs              z piezo voltages, numpy array
-    measure_time    measurement time for DaqSpectrum
-    '''
+    def __init__(self, instruments):
         super().__init__(instruments=instruments);
+    def do(self, xs=[], zs=[], vs=[], cs=[]):
         self.xs = xs;
-        self.ys = ys;
         self.zs = zs;
-        self.spectrastructs = [];
-        self.measure_time = measure_time;
-    def do(self):
-        pz = instruments['piezos'];
-        for x in range(len(xs)):
-            for y in range(len(yz)):
-                for z in range(len(zs)):
-                    pz.sweep(pz.V, {'x':xs[x], 'y':ys[y], 'z':zs[z]});
-                    spectrum = spectrum = DaqSpectrum(instruments, 
-                                          measure_time=self.measure_time, 
-                                          annotate_notes=True
-                                      );
-                    spectrum.notes = "[x,y,z] = [{0:d},{1:d},{2:d}]".format(
-                        int(pz.x.V), int(pz.y.V), int(pz.z.V));
-                    spectrum.run()
-                    vs[z][x] = np.mean(spectrum.V)
-                    cs[z][x] = instruments['lockin_cap'].R;
-                    plt.close('all');
-                    spectrastructs.append(
-                        {'loc':         np.array([pz.x.V, pz.y.V, pz.z.V]),
-                         'spectrum_f':  spectrum.f,
-                         'spectrum_V':  spectrum.V,
-                         'spectrum_psdave': spectrum.psdAve,
-                         'spectrum_name': 'filename' #FIXME
-                        }
-                    )
-                pz.sweep(pz.V, {'x':xs[x], 'y':ys[y], 'z':-pz.z.Vmax});
+        self.vs = vs;
+        self.cs = cs;
         self.plot();
         return;
     def plot(self):
@@ -103,6 +67,8 @@ class Longscan_daqspectrumheight(Measurement):
         self.ax = AttrDict()
         self.ax['ave'] = self.fig.add_subplot(121)
         self.ax['cap'] = self.fig.add_subplot(122)
+        title = self.ax['ave'].set_title(self.timestamp, size="medium", y=1.02)
+        title = self.ax['cap'].set_title(self.timestamp, size="medium", y=1.02)
 
 
 ls_dsh = Longscan_daqspectrumheight(instruments=instruments);

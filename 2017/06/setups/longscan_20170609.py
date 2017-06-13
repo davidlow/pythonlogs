@@ -6,3 +6,5 @@ sc.notes = '''
 Set for 10 hr at close to touching height
 '''
 sc.run()
+
+# [dhl88] Actually took 12.9 hr
