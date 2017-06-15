@@ -36,6 +36,7 @@ import Nowack_Lab.Procedures.scanplane
 
 from Nowack_Lab.Procedures.daqspectrum      import DaqSpectrum
 from Nowack_Lab.Procedures.daqspectrum      import SQUIDSpectrum
+from Nowack_Lab.Procedures.daqspectrum      import AnnotatedSpectrum
 from Nowack_Lab.Procedures.planefit         import Planefit
 from Nowack_Lab.Procedures.scanplane        import Scanplane
 
