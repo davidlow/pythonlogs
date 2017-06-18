@@ -21,3 +21,22 @@ CAP_I = instruments['lockin_cap'].R
 get_ipython().magic('run -i qtconsole/2017/06/setups/longscan_vibrationtest.py')
 # Wed, 14 Jun 2017 23:56:31
 get_ipython().magic('run -i qtconsole/2017/06/setups/longscan_vibrationtest.py')
+# Thu, 15 Jun 2017 01:58:34
+get_ipython().magic('run -i qtconsole/2017/06/setups/longscan_vibrationtest.py')
+# Thu, 15 Jun 2017 19:25:04
+s.reset()
+# Thu, 15 Jun 2017 19:30:15
+td = Touchdown(instruments,planescan=True)
+# Thu, 15 Jun 2017 19:30:18
+td.run()
+# Thu, 15 Jun 2017 19:33:56
+pz.V
+#[Out]# {'x': 115.96025531272463, 'y': 0.004550360559735234, 'z': -0.04698546746128074}
+# Thu, 15 Jun 2017 19:34:02
+pz.zero()
+# Thu, 15 Jun 2017 19:37:11
+td = Touchdown(instruments,planescan=True)
+# Thu, 15 Jun 2017 19:37:17
+td.run()
+# Thu, 15 Jun 2017 19:41:02
+pz.zero()

@@ -1,0 +1,19 @@
+# IPython log file
+
+get_ipython().magic('load qtconsole/2017/06/setups/startlog_20170608.py')
+# Fri, 16 Jun 2017 04:23:49
+get_ipython().magic('load qtconsole/2017/06/setups/main_20170613.py')
+# Fri, 16 Jun 2017 04:23:51
+# %load qtconsole/2017/06/setups/main_20170613.py
+### Setup script main, load me and modify
+### Author: david low (dhl88)
+
+get_ipython().magic('matplotlib qt5')
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170613.py')
+
+# Fri, 16 Jun 2017 04:24:14
+pf = Planefit.load()
+# Fri, 16 Jun 2017 04:24:41
+get_ipython().magic('run -i qtconsole/2017/06/setups/longscan_vibrationtest.py')
+get_ipython().magic('run -i qtconsole/2017/06/setups/longscan_20170609.py')
+

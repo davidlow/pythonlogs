@@ -1,0 +1,33 @@
+# IPython log file
+
+get_ipython().magic('load qtconsole/2017/06/setups/startlog_20170608.py')
+# Fri, 16 Jun 2017 02:17:53
+get_ipython().magic('load qtconsole/2017/06/setups/main_20170613.py')
+# Fri, 16 Jun 2017 02:17:55
+# %load qtconsole/2017/06/setups/main_20170613.py
+### Setup script main, load me and modify
+### Author: david low (dhl88)
+
+get_ipython().magic('matplotlib qt5')
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170613.py')
+
+# Fri, 16 Jun 2017 02:18:30
+td = Touchdown(instruments, planescan=False)
+# Fri, 16 Jun 2017 02:18:33
+td.run()
+# Fri, 16 Jun 2017 02:21:22
+pz.zero()
+# Fri, 16 Jun 2017 02:22:00
+pz.z.sweep(pz.z.V, -pz.z.Vmax)
+#[Out]# (array([  4.55036056e-03,  -1.95451915e-01,  -3.95454190e-01, ...,
+#[Out]#          -3.99599995e+02,  -3.99799998e+02,  -4.00000000e+02]),
+#[Out]#  {'ai23': array([ 2.15844486,  2.15715646,  2.15941116, ...,  2.41129352,
+#[Out]#           2.40936092,  2.41193772]),
+#[Out]#   't': array([  0.00000000e+00,   1.11111111e-03,   2.22222222e-03, ...,
+#[Out]#            2.22000000e+00,   2.22111111e+00,   2.22222222e+00])})
+# Fri, 16 Jun 2017 02:22:47
+pz.z.zero()
+# Fri, 16 Jun 2017 02:23:04
+td = Touchdown(instruments, planescan=False)
+# Fri, 16 Jun 2017 02:23:10
+td.run()
