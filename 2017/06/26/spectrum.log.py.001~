@@ -1,0 +1,26 @@
+# IPython log file
+
+# Mon, 26 Jun 2017 20:56:44
+get_ipython().magic('run -i qtconsole/2017/06/setups/setup_20170622.py')
+# Mon, 26 Jun 2017 20:56:54
+pa.__getstate__()
+#[Out]# {'dccoupled': True, 'filter': (1000, 3000), 'gain': 10, 'overloaded': False}
+# Mon, 26 Jun 2017 20:57:02
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xc6bbcf8>
+# Mon, 26 Jun 2017 20:57:08
+s.__getstate__()
+#[Out]# {'Array bias': 0.0,
+#[Out]#  'Array flux': 0,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0.0,
+#[Out]#  'SQUID bias': 0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': False,
+#[Out]#  'Test input': 'A_flux',
+#[Out]#  'Test signal': 'Auto',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
