@@ -1,0 +1,121 @@
+# IPython log file
+
+get_ipython().magic('load qtconsole/2017/07/setups/startlog_20170703.py')
+# Fri, 14 Jul 2017 17:43:05
+get_ipython().magic('run -i qtconsole/2017/07/setups/RvsTsetup_20170714.py')
+# Fri, 14 Jul 2017 17:43:12
+instruments
+#[Out]# {'lakeshore': <Nowack_Lab.Instruments.lakeshore.Lakeshore372 at 0x7526fd0>,
+#[Out]#  'lockin_I': <Nowack_Lab.Instruments.lockin.SR830 at 0x7526ef0>,
+#[Out]#  'lockin_V': <Nowack_Lab.Instruments.lockin.SR830 at 0x46192b0>}
+# Fri, 14 Jul 2017 17:43:19
+instruments['lakeshore'].T
+#[Out]# {1: 79.7143, 2: 72.7213, 3: 105.209, 5: 80.6287, 6: 101.021, 7: 0.0, 8: 0.0}
+# Fri, 14 Jul 2017 17:43:31
+instruments['lockin_V'].X
+#[Out]# -4.99657e-06
+# Fri, 14 Jul 2017 17:45:16
+instruments['lakeshore'].T
+#[Out]# {1: 79.6556, 2: 72.5817, 3: 105.009, 5: 80.4864, 6: 0.0, 7: 0.0, 8: 0.0}
+# Fri, 14 Jul 2017 17:45:19
+instruments['lockin_V'].X
+#[Out]# 4.98307e-06
+# Fri, 14 Jul 2017 17:45:29
+instruments['lockin_I'].X
+#[Out]# 4.49772e-07
+# Fri, 14 Jul 2017 17:45:43
+instruments['lockin_V'].X/instuments['lockin_I'].X
+# Fri, 14 Jul 2017 17:45:49
+instruments['lockin_V'].X/instruments['lockin_I'].X
+#[Out]# 11.075989612514785
+# Fri, 14 Jul 2017 17:47:04
+m = R_vs_T(instruments=instruments,
+            lakeshore_channel=6,
+            meas_dur=100,
+            timestep=10)
+# Fri, 14 Jul 2017 17:47:54
+from Nowack_Lab.Utilities import save
+# Fri, 14 Jul 2017 17:48:00
+save.get_experiment_data_dir()
+#[Out]# '2017-07-03_4k_damped_hypres_squid_spectra'
+# Fri, 14 Jul 2017 17:48:47
+save.set_experiment_data_dir('hari_sample_cooldown')
+# Fri, 14 Jul 2017 17:48:50
+save.get_experiment_data_dir()
+#[Out]# '2017-07-14_hari_sample_cooldown'
+# Fri, 14 Jul 2017 17:49:34
+m.run()
+# Fri, 14 Jul 2017 17:50:07
+from importlib import reload
+# Fri, 14 Jul 2017 17:50:25
+reload(Nowack_Lab.Procedures.bluefors_vs_T)
+#[Out]# <module 'Nowack_Lab.Procedures.bluefors_vs_T' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Procedures\\bluefors_vs_T.py'>
+# Fri, 14 Jul 2017 17:50:38
+from Nowack_Lab.Procedures.bluefors_vs_T import R_vs_T
+# Fri, 14 Jul 2017 17:50:45
+m = R_vs_T(instruments=instruments,
+            lakeshore_channel=6,
+            meas_dur=100,
+            timestep=10)
+# Fri, 14 Jul 2017 17:50:49
+m.run()
+# Fri, 14 Jul 2017 17:52:03
+reload(Nowack_Lab.Procedures.bluefors_vs_T)
+#[Out]# <module 'Nowack_Lab.Procedures.bluefors_vs_T' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Procedures\\bluefors_vs_T.py'>
+# Fri, 14 Jul 2017 17:52:05
+from Nowack_Lab.Procedures.bluefors_vs_T import R_vs_T
+# Fri, 14 Jul 2017 17:52:09
+m = R_vs_T(instruments=instruments,
+            lakeshore_channel=6,
+            meas_dur=100,
+            timestep=10)
+# Fri, 14 Jul 2017 17:52:13
+m.run()
+# Fri, 14 Jul 2017 17:52:45
+reload(Nowack_Lab.Procedures.bluefors_vs_T)
+#[Out]# <module 'Nowack_Lab.Procedures.bluefors_vs_T' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Procedures\\bluefors_vs_T.py'>
+# Fri, 14 Jul 2017 17:52:47
+from Nowack_Lab.Procedures.bluefors_vs_T import R_vs_T
+# Fri, 14 Jul 2017 17:52:49
+m = R_vs_T(instruments=instruments,
+            lakeshore_channel=6,
+            meas_dur=100,
+            timestep=10)
+# Fri, 14 Jul 2017 17:52:51
+m.run()
+# Fri, 14 Jul 2017 17:53:18
+reload(Nowack_Lab.Procedures.bluefors_vs_T)
+#[Out]# <module 'Nowack_Lab.Procedures.bluefors_vs_T' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Procedures\\bluefors_vs_T.py'>
+# Fri, 14 Jul 2017 17:53:19
+from Nowack_Lab.Procedures.bluefors_vs_T import R_vs_T
+# Fri, 14 Jul 2017 17:53:23
+m = R_vs_T(instruments=instruments,
+            lakeshore_channel=6,
+            meas_dur=100,
+            timestep=10)
+# Fri, 14 Jul 2017 17:53:24
+m.run()
+# Fri, 14 Jul 2017 17:54:01
+reload(Nowack_Lab.Procedures.bluefors_vs_T)
+#[Out]# <module 'Nowack_Lab.Procedures.bluefors_vs_T' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Procedures\\bluefors_vs_T.py'>
+# Fri, 14 Jul 2017 17:54:03
+from Nowack_Lab.Procedures.bluefors_vs_T import R_vs_T
+# Fri, 14 Jul 2017 17:54:06
+m = R_vs_T(instruments=instruments,
+            lakeshore_channel=6,
+            meas_dur=100,
+            timestep=10)
+# Fri, 14 Jul 2017 17:54:08
+m.run()
+# Fri, 14 Jul 2017 17:54:39
+reload(Nowack_Lab.Procedures.bluefors_vs_T)
+#[Out]# <module 'Nowack_Lab.Procedures.bluefors_vs_T' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Procedures\\bluefors_vs_T.py'>
+# Fri, 14 Jul 2017 17:54:41
+from Nowack_Lab.Procedures.bluefors_vs_T import R_vs_T
+# Fri, 14 Jul 2017 17:54:46
+m = R_vs_T(instruments=instruments,
+            lakeshore_channel=6,
+            meas_dur=100,
+            timestep=10)
+# Fri, 14 Jul 2017 17:54:47
+m.run()

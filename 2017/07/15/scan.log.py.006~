@@ -1,0 +1,5 @@
+# IPython log file
+
+get_ipython().magic('load qtconsole/2017/07/setups/startlog_20170703.py')
+# Sat, 15 Jul 2017 11:42:28
+get_ipython().magic('run -i qtconsole/2017/07/setups/setup_20170714.py')

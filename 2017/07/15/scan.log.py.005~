@@ -1,0 +1,12 @@
+# IPython log file
+
+# Sat, 15 Jul 2017 11:43:54
+get_ipython().magic('run -i qtconsole/2017/07/setups/setup_20170714.py')
+# Sat, 15 Jul 2017 11:44:38
+pa
+# Sat, 15 Jul 2017 11:44:59
+pa = SR5113(port="COM3")
+# Sat, 15 Jul 2017 11:45:50
+pa = SR5113(port="COM3")
+# Sat, 15 Jul 2017 11:45:56
+exit()

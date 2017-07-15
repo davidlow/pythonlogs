@@ -1,0 +1,12 @@
+# IPython log file
+
+get_ipython().magic('load -i qtconsole/2017/07/setups/startlog_20170703.py')
+get_ipython().magic('load qtconsole/2017/07/setups/startlog_20170703.py')
+# Fri, 14 Jul 2017 17:41:26
+get_ipython().magic('run -i qtconsole/2017/07/setups/RvsTsetup_20170714.py')
+# Fri, 14 Jul 2017 17:41:45
+get_ipython().magic('run -i qtconsole/2017/07/setups/RvsTsetup_20170714.py')
+# Fri, 14 Jul 2017 17:41:56
+get_ipython().magic('run -i qtconsole/2017/07/setups/RvsTsetup_20170714.py')
+# Fri, 14 Jul 2017 17:42:38
+get_ipython().magic('run -i qtconsole/2017/07/setups/RvsTsetup_20170714.py')

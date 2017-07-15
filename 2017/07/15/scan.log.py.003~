@@ -1,0 +1,645 @@
+# IPython log file
+
+# Sat, 15 Jul 2017 11:49:52
+get_ipython().magic('run -i qtconsole/2017/07/setups/setup_20170714.py')
+# Sat, 15 Jul 2017 11:57:59
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xe373358>
+# Sat, 15 Jul 2017 11:58:05
+s.__getstate__()
+#[Out]# {'Array bias': 0,
+#[Out]#  'Array flux': 0,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0,
+#[Out]#  'SQUID bias': 0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': False,
+#[Out]#  'Test input': 'S_flux',
+#[Out]#  'Test signal': 'Off',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
+# Sat, 15 Jul 2017 11:58:15
+s.testSignal
+#[Out]# 'Off'
+# Sat, 15 Jul 2017 11:58:19
+s.testInput
+#[Out]# 'S_flux'
+# Sat, 15 Jul 2017 11:58:24
+s.testInput = 'A_flux'
+# Sat, 15 Jul 2017 11:58:28
+s.testSignal
+#[Out]# 'Off'
+# Sat, 15 Jul 2017 11:58:30
+s.testSignal = 'On'
+# Sat, 15 Jul 2017 11:59:00
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xe373358>
+# Sat, 15 Jul 2017 11:59:04
+s.__getstate__()
+#[Out]# {'Array bias': 0,
+#[Out]#  'Array flux': 0,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0,
+#[Out]#  'SQUID bias': 0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': False,
+#[Out]#  'Test input': 'A_flux',
+#[Out]#  'Test signal': 'On',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
+# Sat, 15 Jul 2017 11:59:10
+s.A_bias
+#[Out]# 0
+# Sat, 15 Jul 2017 11:59:12
+s.A_bias = 42
+# Sat, 15 Jul 2017 11:59:16
+s.reset()
+# Sat, 15 Jul 2017 11:59:19
+s.A_bias = 43
+# Sat, 15 Jul 2017 11:59:21
+s.A_bias = 44
+# Sat, 15 Jul 2017 11:59:23
+s.A_bias = 45
+# Sat, 15 Jul 2017 11:59:28
+s.A_bias = 46
+# Sat, 15 Jul 2017 11:59:30
+s.reset()
+# Sat, 15 Jul 2017 11:59:38
+s.offset
+#[Out]# 0
+# Sat, 15 Jul 2017 11:59:40
+s.offset = .1
+# Sat, 15 Jul 2017 11:59:42
+s.offset = .2
+# Sat, 15 Jul 2017 11:59:43
+s.offset = .3
+# Sat, 15 Jul 2017 11:59:46
+s.offset = .4
+# Sat, 15 Jul 2017 11:59:54
+s.A_bias = 47
+# Sat, 15 Jul 2017 11:59:57
+s.A_bias = 46
+# Sat, 15 Jul 2017 11:59:58
+s.A_bias = 45
+# Sat, 15 Jul 2017 12:00:01
+s.A_bias = 44
+# Sat, 15 Jul 2017 12:00:04
+s.A_bias = 45
+# Sat, 15 Jul 2017 12:00:07
+s.A_bias = 44
+# Sat, 15 Jul 2017 12:00:11
+s.reset()
+# Sat, 15 Jul 2017 12:00:16
+s.offset = .3
+# Sat, 15 Jul 2017 12:05:46
+s.lock('squid')
+# Sat, 15 Jul 2017 12:05:49
+s.reset()
+# Sat, 15 Jul 2017 12:05:56
+s.testSignal
+#[Out]# 'On'
+# Sat, 15 Jul 2017 12:06:00
+s.testInput
+#[Out]# 'A_flux'
+# Sat, 15 Jul 2017 12:06:06
+s.testInput = 'S_flux'
+# Sat, 15 Jul 2017 12:06:08
+s.reset()
+# Sat, 15 Jul 2017 12:06:10
+s.reset()
+# Sat, 15 Jul 2017 12:06:31
+s.A_flux
+#[Out]# 0
+# Sat, 15 Jul 2017 12:06:32
+s.A_flux = 10
+# Sat, 15 Jul 2017 12:06:36
+s.A_flux = 5
+# Sat, 15 Jul 2017 12:06:38
+s.A_flux = 4
+# Sat, 15 Jul 2017 12:06:41
+s.reset()
+# Sat, 15 Jul 2017 12:06:45
+s.A_flux = 2
+# Sat, 15 Jul 2017 12:06:50
+s.testInput = 'A_flux'
+# Sat, 15 Jul 2017 12:06:57
+s.A_flux = 1
+# Sat, 15 Jul 2017 12:06:59
+s.A_flux = 2
+# Sat, 15 Jul 2017 12:07:01
+s.A_flux = 3
+# Sat, 15 Jul 2017 12:07:11
+s.testSignal = 'Off'
+# Sat, 15 Jul 2017 12:07:14
+s.reset()
+# Sat, 15 Jul 2017 12:07:23
+s.A_flux = 3.1
+# Sat, 15 Jul 2017 12:07:24
+s.A_flux = 3.2
+# Sat, 15 Jul 2017 12:07:25
+s.A_flux = 3.3
+# Sat, 15 Jul 2017 12:07:30
+s.reset()
+# Sat, 15 Jul 2017 12:07:43
+s.__getstate__()
+#[Out]# {'Array bias': 44,
+#[Out]#  'Array flux': 3.3,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0.3,
+#[Out]#  'SQUID bias': 0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': True,
+#[Out]#  'Test input': 'A_flux',
+#[Out]#  'Test signal': 'Off',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
+# Sat, 15 Jul 2017 12:08:08
+s.lock
+#[Out]# <bound method PFL102.lock of <Nowack_Lab.Instruments.squidarray.SquidArray object at 0x000000000E373358>>
+# Sat, 15 Jul 2017 12:08:10
+s.locked
+# Sat, 15 Jul 2017 12:08:17
+s.lock('Array')
+# Sat, 15 Jul 2017 12:08:20
+s.reset()
+# Sat, 15 Jul 2017 12:08:36
+s.reset()
+# Sat, 15 Jul 2017 12:08:43
+s.A_flux
+#[Out]# 3.3
+# Sat, 15 Jul 2017 12:08:46
+s.A_flux = 3
+# Sat, 15 Jul 2017 12:08:48
+s.A_flux = 4
+# Sat, 15 Jul 2017 12:08:53
+s.A_flux = 4.1
+# Sat, 15 Jul 2017 12:12:53
+s.S_bias = 100
+# Sat, 15 Jul 2017 12:12:57
+s.reset()
+# Sat, 15 Jul 2017 12:13:00
+s.S_bias = 200
+# Sat, 15 Jul 2017 12:13:06
+s.S_bias = 300
+# Sat, 15 Jul 2017 12:13:08
+s.reset()
+# Sat, 15 Jul 2017 12:13:12
+s.S_bias = 400
+# Sat, 15 Jul 2017 12:13:14
+s.S_bias = 500
+# Sat, 15 Jul 2017 12:13:20
+s.S_bias = 600
+# Sat, 15 Jul 2017 12:13:23
+s.reset()
+# Sat, 15 Jul 2017 12:13:24
+s.reset()
+# Sat, 15 Jul 2017 12:13:28
+s.S_bias = 700
+# Sat, 15 Jul 2017 12:13:30
+s.reset()
+# Sat, 15 Jul 2017 12:13:33
+s.S_bias = 800
+# Sat, 15 Jul 2017 12:13:35
+s.reset()
+# Sat, 15 Jul 2017 12:13:39
+s.S_bias = 900
+# Sat, 15 Jul 2017 12:13:41
+s.reset()
+# Sat, 15 Jul 2017 12:13:51
+s.testSignal
+#[Out]# 'Off'
+# Sat, 15 Jul 2017 12:13:54
+s.testInput
+#[Out]# 'A_flux'
+# Sat, 15 Jul 2017 12:14:00
+s.testInput = 'S_flux'
+# Sat, 15 Jul 2017 12:14:02
+s.testSignal
+#[Out]# 'Off'
+# Sat, 15 Jul 2017 12:14:05
+s.testSignal = 'On'
+# Sat, 15 Jul 2017 12:14:21
+s.S_bias
+#[Out]# 900
+# Sat, 15 Jul 2017 12:14:23
+s.S_bias = 0
+# Sat, 15 Jul 2017 12:14:25
+s.reset()
+# Sat, 15 Jul 2017 12:14:28
+s.S_bias = 100
+# Sat, 15 Jul 2017 12:14:29
+s.reset()
+# Sat, 15 Jul 2017 12:14:50
+s.S_bias = 200
+# Sat, 15 Jul 2017 12:14:53
+s.S_bias = 2300
+# Sat, 15 Jul 2017 12:14:57
+s.S_bias = 200
+# Sat, 15 Jul 2017 12:15:02
+s.S_bias = 300
+# Sat, 15 Jul 2017 12:15:05
+s.S_bias = 3400
+# Sat, 15 Jul 2017 12:15:10
+s.S_bias = 400
+# Sat, 15 Jul 2017 12:15:13
+s.reset()
+# Sat, 15 Jul 2017 12:15:19
+s.S_bias = 500
+# Sat, 15 Jul 2017 12:15:25
+s.S_bias = 600
+# Sat, 15 Jul 2017 12:15:28
+s.S_bias = 700
+# Sat, 15 Jul 2017 12:15:34
+s.S_bias = 800
+# Sat, 15 Jul 2017 12:15:36
+s.reset()
+# Sat, 15 Jul 2017 12:15:47
+s.S_bias = 800
+# Sat, 15 Jul 2017 12:15:50
+s.reset()
+# Sat, 15 Jul 2017 12:15:54
+s.S_bias = 900
+# Sat, 15 Jul 2017 12:15:57
+s.reset()
+# Sat, 15 Jul 2017 12:16:01
+s.S_bias = 1000
+# Sat, 15 Jul 2017 12:16:06
+s.S_bias = 1100
+# Sat, 15 Jul 2017 12:16:10
+s.S_bias = 1200
+# Sat, 15 Jul 2017 12:16:14
+s.reset()
+# Sat, 15 Jul 2017 12:16:18
+s.S_bias = 1300
+# Sat, 15 Jul 2017 12:16:21
+s.S_bias = 1400
+# Sat, 15 Jul 2017 12:16:27
+s.S_bias = 1500
+# Sat, 15 Jul 2017 12:16:29
+s.S_bias = 1400
+# Sat, 15 Jul 2017 12:16:36
+s.reset()
+# Sat, 15 Jul 2017 12:16:38
+s.reset()
+# Sat, 15 Jul 2017 12:16:42
+s.S_flux
+#[Out]# 0
+# Sat, 15 Jul 2017 12:16:45
+s.S_flux = 10
+# Sat, 15 Jul 2017 12:16:53
+s.A_flux
+#[Out]# 4.1
+# Sat, 15 Jul 2017 12:16:55
+s.A_flux = 5
+# Sat, 15 Jul 2017 12:16:57
+s.A_flux = 6
+# Sat, 15 Jul 2017 12:17:00
+s.A_flux = 10
+# Sat, 15 Jul 2017 12:17:03
+s.A_flux = 15
+# Sat, 15 Jul 2017 12:17:05
+s.A_flux = 13
+# Sat, 15 Jul 2017 12:21:49
+s.reset()
+# Sat, 15 Jul 2017 12:22:24
+s.lock()
+# Sat, 15 Jul 2017 12:22:29
+s.lock('Squid')
+# Sat, 15 Jul 2017 12:22:34
+s.reset()
+# Sat, 15 Jul 2017 12:22:39
+s.testSignal
+#[Out]# 'On'
+# Sat, 15 Jul 2017 12:22:41
+s.testSignal = 'Off'
+# Sat, 15 Jul 2017 12:22:45
+s.reset()
+# Sat, 15 Jul 2017 12:22:46
+s.reset()
+# Sat, 15 Jul 2017 12:23:00
+s.S_flux
+#[Out]# 10
+# Sat, 15 Jul 2017 12:23:02
+s.S_flux = 0
+# Sat, 15 Jul 2017 12:23:04
+s.S_flux = 50
+# Sat, 15 Jul 2017 12:23:07
+s.reset()
+# Sat, 15 Jul 2017 12:23:15
+s.reset()
+# Sat, 15 Jul 2017 12:23:20
+s.S_flux = 0
+# Sat, 15 Jul 2017 12:23:23
+s.reset()
+# Sat, 15 Jul 2017 12:23:26
+s.S_flux = 30
+# Sat, 15 Jul 2017 12:23:29
+s.S_flux = 50
+# Sat, 15 Jul 2017 12:23:31
+s.reset()
+# Sat, 15 Jul 2017 12:23:34
+s.S_flux = 60
+# Sat, 15 Jul 2017 12:23:36
+s.S_flux = 90
+# Sat, 15 Jul 2017 12:23:39
+s.reset()
+# Sat, 15 Jul 2017 12:23:54
+s.lock('Array')
+# Sat, 15 Jul 2017 12:23:58
+s.reset()
+# Sat, 15 Jul 2017 12:24:03
+s.testSignal
+#[Out]# 'Off'
+# Sat, 15 Jul 2017 12:24:04
+s.testSignal = 'On'
+# Sat, 15 Jul 2017 12:24:19
+s.S_flux = 50
+# Sat, 15 Jul 2017 12:24:26
+s.lock('Squid')
+# Sat, 15 Jul 2017 12:24:30
+s.reset()
+# Sat, 15 Jul 2017 12:24:31
+s.reset()
+# Sat, 15 Jul 2017 12:24:32
+s.reset()
+# Sat, 15 Jul 2017 12:24:33
+s.reset()
+# Sat, 15 Jul 2017 12:24:46
+s.S_flux = 0
+# Sat, 15 Jul 2017 12:24:52
+s.reset()
+# Sat, 15 Jul 2017 12:24:56
+s.S_flux = 10
+# Sat, 15 Jul 2017 12:24:59
+s.S_flux = 100
+# Sat, 15 Jul 2017 12:25:06
+s.reset()
+# Sat, 15 Jul 2017 12:25:07
+s.reset()
+# Sat, 15 Jul 2017 12:25:08
+s.reset()
+# Sat, 15 Jul 2017 12:25:11
+s.S_flux
+#[Out]# 100
+# Sat, 15 Jul 2017 12:25:14
+s.S_flux = 90
+# Sat, 15 Jul 2017 12:25:34
+s.lock('Array')
+# Sat, 15 Jul 2017 12:25:37
+s.reset()
+# Sat, 15 Jul 2017 12:25:48
+s.S_bias
+#[Out]# 1400
+# Sat, 15 Jul 2017 12:25:52
+s.S_bias = 1300
+# Sat, 15 Jul 2017 12:25:56
+s.S_bias = 1200
+# Sat, 15 Jul 2017 12:25:57
+s.reset()
+# Sat, 15 Jul 2017 12:26:01
+s.S_bias = 1100
+# Sat, 15 Jul 2017 12:26:04
+s.S_bias = 1000
+# Sat, 15 Jul 2017 12:26:06
+s.reset()
+# Sat, 15 Jul 2017 12:26:14
+s.lock('Squid')
+# Sat, 15 Jul 2017 12:26:18
+s.reset()
+# Sat, 15 Jul 2017 12:26:41
+s.testSignal
+#[Out]# 'On'
+# Sat, 15 Jul 2017 12:26:44
+s.testSignal = 'Off'
+# Sat, 15 Jul 2017 12:26:58
+s.S_flux
+#[Out]# 90
+# Sat, 15 Jul 2017 12:27:00
+s.S_flux = 50
+# Sat, 15 Jul 2017 12:27:03
+s.reset()
+# Sat, 15 Jul 2017 12:27:06
+s.S_flux = 0
+# Sat, 15 Jul 2017 12:27:07
+s.reset()
+# Sat, 15 Jul 2017 12:27:14
+s.S_flux = 20
+# Sat, 15 Jul 2017 12:27:17
+s.S_flux = 50
+# Sat, 15 Jul 2017 12:27:19
+s.reset()
+# Sat, 15 Jul 2017 12:27:23
+s.S_flux = 60
+# Sat, 15 Jul 2017 12:27:25
+s.S_flux = 90
+# Sat, 15 Jul 2017 12:27:31
+s.S_flux = 0
+# Sat, 15 Jul 2017 12:27:36
+s.lock('Array')
+# Sat, 15 Jul 2017 12:27:44
+s.testSignal = 'On'
+# Sat, 15 Jul 2017 12:27:47
+s.reset()
+# Sat, 15 Jul 2017 12:27:55
+s.S_bias
+#[Out]# 1000
+# Sat, 15 Jul 2017 12:28:13
+s.S_bias = 1100
+# Sat, 15 Jul 2017 12:28:15
+s.reset()
+# Sat, 15 Jul 2017 12:28:18
+s.S_bias = 900
+# Sat, 15 Jul 2017 12:28:21
+s.reset()
+# Sat, 15 Jul 2017 12:28:25
+s.S_bias = 950
+# Sat, 15 Jul 2017 12:28:30
+s.S_bias = 960
+# Sat, 15 Jul 2017 12:28:32
+s.S_bias = 970
+# Sat, 15 Jul 2017 12:28:34
+s.S_bias = 980
+# Sat, 15 Jul 2017 12:28:37
+s.S_bias = 990
+# Sat, 15 Jul 2017 12:28:40
+s.S_bias = 990
+# Sat, 15 Jul 2017 12:28:44
+s.S_bias = 980
+# Sat, 15 Jul 2017 12:28:47
+s.reset()
+# Sat, 15 Jul 2017 12:28:50
+s.S_flux
+#[Out]# 0
+# Sat, 15 Jul 2017 12:28:51
+s.S_flux = 10
+# Sat, 15 Jul 2017 12:28:58
+s.A_flux
+#[Out]# 13
+# Sat, 15 Jul 2017 12:29:01
+s.A_flux = 15
+# Sat, 15 Jul 2017 12:29:04
+s.A_flux = 14
+# Sat, 15 Jul 2017 12:29:10
+s.reset()
+# Sat, 15 Jul 2017 12:29:16
+s.lock('Squid')
+# Sat, 15 Jul 2017 12:29:18
+s.reset()
+# Sat, 15 Jul 2017 12:29:21
+s.reset()
+# Sat, 15 Jul 2017 12:29:26
+s.S_flux
+#[Out]# 10
+# Sat, 15 Jul 2017 12:29:30
+s.S_flux = 40
+# Sat, 15 Jul 2017 12:29:33
+s.reset()
+# Sat, 15 Jul 2017 12:29:42
+s.reset()
+# Sat, 15 Jul 2017 12:29:47
+s.S_flux = 60
+# Sat, 15 Jul 2017 12:29:49
+s.S_flux = 0
+# Sat, 15 Jul 2017 12:29:53
+s.reset()
+# Sat, 15 Jul 2017 12:29:57
+s.S_flux = 40
+# Sat, 15 Jul 2017 12:29:59
+s.reset()
+# Sat, 15 Jul 2017 12:30:00
+s.reset()
+# Sat, 15 Jul 2017 12:30:04
+s.S_flux = 100
+# Sat, 15 Jul 2017 12:30:08
+s.S_flux = 150
+# Sat, 15 Jul 2017 12:30:13
+s.S_flux = 100
+# Sat, 15 Jul 2017 12:30:16
+s.reset()
+# Sat, 15 Jul 2017 12:30:16
+s.reset()
+# Sat, 15 Jul 2017 12:30:17
+s.reset()
+# Sat, 15 Jul 2017 12:30:30
+s.testSignal='Off'
+# Sat, 15 Jul 2017 12:32:35
+get_ipython().magic('load qtconsole/2017/07/setups/annotatedspectrum_20170626.py')
+# Sat, 15 Jul 2017 12:33:05
+# %load qtconsole/2017/07/setups/annotatedspectrum_20170626.py
+spectrum = AnnotatedSpectrum(1,instruments, 
+        measure_time = 1, 
+        preamp_filter_override=True, 
+        preamp_dccouple_override=True, 
+        preamp_autoOL=False, 
+        annotate_piezos=True, 
+        annotate_cap = False)
+spectrum.notes = '4.5K'
+spectrum.squidspectra()
+spectrum.run()
+
+# Sat, 15 Jul 2017 12:46:43
+# %load qtconsole/2017/07/setups/annotatedspectrum_20170626.py
+spectrum = AnnotatedSpectrum(1,instruments, 
+        measure_time = 1, 
+        preamp_filter_override=True, 
+        preamp_dccouple_override=True, 
+        preamp_autoOL=False, 
+        annotate_piezos=True, 
+        annotate_cap = False)
+spectrum.notes = '4.5K, cap on at 26KHz'
+spectrum.squidspectra()
+spectrum.run()
+
+# Sat, 15 Jul 2017 12:51:12
+td = Touchdown(instruments=instruments)
+# Sat, 15 Jul 2017 12:52:31
+import Nowack_Lab.Procedures.touchdown
+# Sat, 15 Jul 2017 12:52:38
+from Nowack_Lab.Procedures.touchdown import Touchdown
+# Sat, 15 Jul 2017 12:52:50
+td = Touchdown(instruments=instruments)
+# Sat, 15 Jul 2017 12:53:19
+daq.inputs
+#[Out]# {'acx': InputChannel; name: ai4; label: acx; V = -1.625,
+#[Out]#  'acy': InputChannel; name: ai5; label: acy; V = -0.326,
+#[Out]#  'ai1': InputChannel; name: ai1; label: ai1; V = -0.211,
+#[Out]#  'ai10': InputChannel; name: ai10; label: ai10; V = 0.001,
+#[Out]#  'ai11': InputChannel; name: ai11; label: ai11; V = 0.000,
+#[Out]#  'ai12': InputChannel; name: ai12; label: ai12; V = -0.003,
+#[Out]#  'ai13': InputChannel; name: ai13; label: ai13; V = 0.001,
+#[Out]#  'ai14': InputChannel; name: ai14; label: ai14; V = -0.002,
+#[Out]#  'ai15': InputChannel; name: ai15; label: ai15; V = -0.000,
+#[Out]#  'ai16': InputChannel; name: ai16; label: ai16; V = 0.100,
+#[Out]#  'ai17': InputChannel; name: ai17; label: ai17; V = 0.099,
+#[Out]#  'ai18': InputChannel; name: ai18; label: ai18; V = 0.125,
+#[Out]#  'ai19': InputChannel; name: ai19; label: ai19; V = -0.017,
+#[Out]#  'ai2': InputChannel; name: ai2; label: ai2; V = -0.041,
+#[Out]#  'ai20': InputChannel; name: ai20; label: ai20; V = -0.089,
+#[Out]#  'ai21': InputChannel; name: ai21; label: ai21; V = -0.048,
+#[Out]#  'ai22': InputChannel; name: ai22; label: ai22; V = -0.102,
+#[Out]#  'ai23': InputChannel; name: ai23; label: ai23; V = 0.044,
+#[Out]#  'ai24': InputChannel; name: ai24; label: ai24; V = 0.000,
+#[Out]#  'ai25': InputChannel; name: ai25; label: ai25; V = -0.000,
+#[Out]#  'ai26': InputChannel; name: ai26; label: ai26; V = 0.000,
+#[Out]#  'ai27': InputChannel; name: ai27; label: ai27; V = 0.000,
+#[Out]#  'ai28': InputChannel; name: ai28; label: ai28; V = -0.000,
+#[Out]#  'ai29': InputChannel; name: ai29; label: ai29; V = -0.000,
+#[Out]#  'ai3': InputChannel; name: ai3; label: ai3; V = -0.029,
+#[Out]#  'ai30': InputChannel; name: ai30; label: ai30; V = 0.000,
+#[Out]#  'ai31': InputChannel; name: ai31; label: ai31; V = 0.000,
+#[Out]#  'ai7': InputChannel; name: ai7; label: ai7; V = 0.310,
+#[Out]#  'ai8': InputChannel; name: ai8; label: ai8; V = -0.002,
+#[Out]#  'ai9': InputChannel; name: ai9; label: ai9; V = 0.000,
+#[Out]#  'cap': InputChannel; name: ai0; label: cap; V = 1.003,
+#[Out]#  'dc': InputChannel; name: ai6; label: dc; V = 3.555}
+# Sat, 15 Jul 2017 12:53:46
+daq.inputs['capx']
+# Sat, 15 Jul 2017 12:53:54
+daq.inputs['capx'] = 2
+# Sat, 15 Jul 2017 12:54:00
+daq.inputs['capy'] = 3
+# Sat, 15 Jul 2017 12:54:02
+daq.inputs
+#[Out]# {'acx': InputChannel; name: ai4; label: acx; V = -0.734,
+#[Out]#  'acy': InputChannel; name: ai5; label: acy; V = -0.304,
+#[Out]#  'ai1': InputChannel; name: ai1; label: ai1; V = -0.069,
+#[Out]#  'ai10': InputChannel; name: ai10; label: ai10; V = 0.000,
+#[Out]#  'ai11': InputChannel; name: ai11; label: ai11; V = -0.001,
+#[Out]#  'ai12': InputChannel; name: ai12; label: ai12; V = 0.000,
+#[Out]#  'ai13': InputChannel; name: ai13; label: ai13; V = -0.007,
+#[Out]#  'ai14': InputChannel; name: ai14; label: ai14; V = 0.001,
+#[Out]#  'ai15': InputChannel; name: ai15; label: ai15; V = 0.000,
+#[Out]#  'ai16': InputChannel; name: ai16; label: ai16; V = 0.094,
+#[Out]#  'ai17': InputChannel; name: ai17; label: ai17; V = 0.102,
+#[Out]#  'ai18': InputChannel; name: ai18; label: ai18; V = -0.026,
+#[Out]#  'ai19': InputChannel; name: ai19; label: ai19; V = -0.054,
+#[Out]#  'ai2': InputChannel; name: ai2; label: ai2; V = -0.032,
+#[Out]#  'ai20': InputChannel; name: ai20; label: ai20; V = -0.068,
+#[Out]#  'ai21': InputChannel; name: ai21; label: ai21; V = -0.052,
+#[Out]#  'ai22': InputChannel; name: ai22; label: ai22; V = -0.115,
+#[Out]#  'ai23': InputChannel; name: ai23; label: ai23; V = 0.042,
+#[Out]#  'ai24': InputChannel; name: ai24; label: ai24; V = -0.000,
+#[Out]#  'ai25': InputChannel; name: ai25; label: ai25; V = 0.000,
+#[Out]#  'ai26': InputChannel; name: ai26; label: ai26; V = 0.000,
+#[Out]#  'ai27': InputChannel; name: ai27; label: ai27; V = 0.000,
+#[Out]#  'ai28': InputChannel; name: ai28; label: ai28; V = 0.000,
+#[Out]#  'ai29': InputChannel; name: ai29; label: ai29; V = 0.000,
+#[Out]#  'ai3': InputChannel; name: ai3; label: ai3; V = -0.030,
+#[Out]#  'ai30': InputChannel; name: ai30; label: ai30; V = -0.000,
+#[Out]#  'ai31': InputChannel; name: ai31; label: ai31; V = 0.000,
+#[Out]#  'ai7': InputChannel; name: ai7; label: ai7; V = 0.270,
+#[Out]#  'ai8': InputChannel; name: ai8; label: ai8; V = 0.005,
+#[Out]#  'ai9': InputChannel; name: ai9; label: ai9; V = 0.000,
+#[Out]#  'cap': InputChannel; name: ai0; label: cap; V = 0.985,
+#[Out]#  'dc': InputChannel; name: ai6; label: dc; V = 3.174}
+# Sat, 15 Jul 2017 12:54:27
+td = Touchdown(instruments=instruments)

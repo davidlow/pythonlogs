@@ -1,0 +1,29 @@
+# IPython log file
+
+get_ipython().magic('load qtconsole/2017/07/setups/startlog_20170703.py')
+# Sat, 15 Jul 2017 12:54:58
+get_ipython().magic('run -i qtconsole/2017/07/setups/setup_20170714.py')
+# Sat, 15 Jul 2017 12:55:09
+pa
+#[Out]# <Nowack_Lab.Instruments.preamp.SR5113 at 0xc36c5c0>
+# Sat, 15 Jul 2017 12:55:10
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xe310208>
+# Sat, 15 Jul 2017 12:55:15
+s.__getstate__()
+#[Out]# {'Array bias': 44,
+#[Out]#  'Array flux': 14,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0.3,
+#[Out]#  'SQUID bias': 980,
+#[Out]#  'SQUID flux': 100,
+#[Out]#  'SQUID locked': True,
+#[Out]#  'Test input': 'S_flux',
+#[Out]#  'Test signal': 'Off',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
+# Sat, 15 Jul 2017 12:55:43
+td = Touchdown(instruments=instruments)

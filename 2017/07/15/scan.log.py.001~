@@ -1,0 +1,8 @@
+# IPython log file
+
+# Sat, 15 Jul 2017 12:56:39
+get_ipython().magic('run -i qtconsole/2017/07/setups/setup_20170714.py')
+# Sat, 15 Jul 2017 12:56:53
+td = Touchdown(instruments=instruments)
+# Sat, 15 Jul 2017 13:31:33
+td.run()
