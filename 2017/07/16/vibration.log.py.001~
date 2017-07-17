@@ -1,0 +1,48 @@
+# IPython log file
+
+get_ipython().magic('load qtconsole/2017/07/setups/startlog_20170703.py')
+# Sun, 16 Jul 2017 23:18:49
+get_ipython().magic('run -i qtconsole/2017/07/setups/setup_20170714.py')
+# Sun, 16 Jul 2017 23:19:49
+get_ipython().magic('run -i qtconsole/2017/07/setups/setup_20170714.py')
+# Sun, 16 Jul 2017 23:20:08
+pf = Planefit.load()
+# Sun, 16 Jul 2017 23:20:09
+pf
+#[Out]# <Nowack_Lab.Procedures.planefit.Planefit at 0xc73e710>
+# Sun, 16 Jul 2017 23:20:25
+from importlib import reload
+# Sun, 16 Jul 2017 23:20:29
+import Nowack_Lab.Procedures.vibration
+# Sun, 16 Jul 2017 23:20:38
+get_ipython().magic('load qtconsole/2017/07/setups/vibration_20170716.py')
+# Sun, 16 Jul 2017 23:20:45
+# %load qtconsole/2017/07/setups/vibration_20170716.py
+reload(Nowack_Lab.Procedures.vibration)
+from Nowack_Lab.Procedures.vibration import Vibration
+
+v = Vibration(pf, liC.R, instruments=instruments,
+                xs=np.linspace(222,322,3),
+                ys=np.linspace(25,65,3),
+                measure_time=.1,
+                averages=1
+)
+v.run()
+
+# Sun, 16 Jul 2017 23:20:49
+import numpy asn p
+# Sun, 16 Jul 2017 23:20:52
+import numpy as np
+# Sun, 16 Jul 2017 23:20:56
+# %load qtconsole/2017/07/setups/vibration_20170716.py
+reload(Nowack_Lab.Procedures.vibration)
+from Nowack_Lab.Procedures.vibration import Vibration
+
+v = Vibration(pf, liC.R, instruments=instruments,
+                xs=np.linspace(222,322,3),
+                ys=np.linspace(25,65,3),
+                measure_time=.1,
+                averages=1
+)
+v.run()
+
