@@ -1,0 +1,172 @@
+# IPython log file
+
+y
+### J
+Restarting kernel... 
+
+
+ 
+Restarting kernel... 
+
+
+ ust starts logs.  This will neve in the log file
+### Author: david low (dhl88)
+
+get_ipython().magic('logstart -ot qtconsole/2017/07/03/scan.log.py rotat')
+get_ipython().magic('load qtconsole/2017/07/setups/startlog_20170703.py')
+# Tue, 18 Jul 2017 15:15:14
+get_ipython().magic('run -i qtconsole/2017/07/setups/setup_20170714.py')
+# Tue, 18 Jul 2017 15:15:36
+pf = Planefit(instruments=instruments)
+# Tue, 18 Jul 2017 15:15:47
+pf.run()
+# Tue, 18 Jul 2017 15:54:49
+pf.colorplot()
+#[Out]# (<matplotlib.figure.Figure at 0x1095bcc0>,
+#[Out]#  <matplotlib.axes._subplots.AxesSubplot at 0x10492be0>)
+# Tue, 18 Jul 2017 15:55:49
+get_ipython().magic('pinfo pz')
+# Tue, 18 Jul 2017 15:55:55
+pz.zero()
+# Tue, 18 Jul 2017 15:57:22
+daq.outputs
+#[Out]# {'ao3': OutputChannel; name: ao3; label: ao3; V = -0.001,
+#[Out]#  'x': OutputChannel; name: ao0; label: x; V = -0.001,
+#[Out]#  'y': OutputChannel; name: ao1; label: y; V = 0.000,
+#[Out]#  'z': OutputChannel; name: ao2; label: z; V = -0.000}
+# Tue, 18 Jul 2017 16:00:01
+s.__getstate__
+#[Out]# <bound method PFL102.__getstate__ of <Nowack_Lab.Instruments.squidarray.SquidArray object at 0x000000000E3106D8>>
+# Tue, 18 Jul 2017 16:03:42
+l
+# Tue, 18 Jul 2017 16:04:13
+from Nowack_Lab.Instruments.lakeshore import Lakeshore372
+# Tue, 18 Jul 2017 16:04:17
+l = Lakeshore372()
+# Tue, 18 Jul 2017 16:04:23
+l.enable_all()
+# Tue, 18 Jul 2017 16:04:36
+instruments
+#[Out]# {'atto': <Nowack_Lab.Instruments.attocube.Attocube at 0xe3101d0>,
+#[Out]#  'daq': <Nowack_Lab.Instruments.nidaq.NIDAQ at 0x45e97f0>,
+#[Out]#  'lockin_cap': <Nowack_Lab.Instruments.lockin.SR830 at 0xe2f2b38>,
+#[Out]#  'lockin_squid': <Nowack_Lab.Instruments.lockin.SR830 at 0xe2f2cc0>,
+#[Out]#  'montana': <Nowack_Lab.Instruments.montana.Montana at 0xc3efef0>,
+#[Out]#  'piezos': <Nowack_Lab.Instruments.piezos.Piezos at 0xe2f2e80>,
+#[Out]#  'preamp': <Nowack_Lab.Instruments.preamp.SR5113 at 0xe2f29b0>,
+#[Out]#  'squidarray': <Nowack_Lab.Instruments.squidarray.SquidArray at 0xe3106d8>}
+# Tue, 18 Jul 2017 16:04:44
+instruments['lakeshore'] = l
+# Tue, 18 Jul 2017 16:05:17
+daq.outputs
+#[Out]# {'ao3': OutputChannel; name: ao3; label: ao3; V = -0.001,
+#[Out]#  'x': OutputChannel; name: ao0; label: x; V = -0.001,
+#[Out]#  'y': OutputChannel; name: ao1; label: y; V = 0.000,
+#[Out]#  'z': OutputChannel; name: ao2; label: z; V = 0.000}
+# Tue, 18 Jul 2017 16:05:36
+from Nowack_Lab.Procedures import daqtransport
+# Tue, 18 Jul 2017 16:06:02
+from Nowack_Lab.Procedures import daqtransport
+# Tue, 18 Jul 2017 16:06:54
+daq.outputs
+#[Out]# {'ao3': OutputChannel; name: ao3; label: ao3; V = 0.000,
+#[Out]#  'x': OutputChannel; name: ao0; label: x; V = -0.001,
+#[Out]#  'y': OutputChannel; name: ao1; label: y; V = 0.000,
+#[Out]#  'z': OutputChannel; name: ao2; label: z; V = 0.000}
+# Tue, 18 Jul 2017 16:08:08
+daq.outputs['bias'] = 3
+# Tue, 18 Jul 2017 16:08:11
+daq.outputs
+#[Out]# {'ao3': OutputChannel; name: ao3; label: ao3; V = -0.000,
+#[Out]#  'x': OutputChannel; name: ao0; label: x; V = -0.000,
+#[Out]#  'y': OutputChannel; name: ao1; label: y; V = 0.000,
+#[Out]#  'z': OutputChannel; name: ao2; label: z; V = 0.000}
+# Tue, 18 Jul 2017 16:08:28
+daq.outputs = {'bias':3}
+# Tue, 18 Jul 2017 16:08:31
+daq.outputs
+#[Out]# {'bias': OutputChannel; name: ao3; label: bias; V = -0.000,
+#[Out]#  'x': OutputChannel; name: ao0; label: x; V = -0.001,
+#[Out]#  'y': OutputChannel; name: ao1; label: y; V = -0.000,
+#[Out]#  'z': OutputChannel; name: ao2; label: z; V = -0.000}
+# Tue, 18 Jul 2017 16:08:52
+daq.inputs {'voltage': 4}
+# Tue, 18 Jul 2017 16:09:02
+daq.inputs = {"voltage" : 4}
+# Tue, 18 Jul 2017 16:09:03
+daq.inputs
+#[Out]# {'acy': InputChannel; name: ai5; label: acy; V = -0.060,
+#[Out]#  'ai10': InputChannel; name: ai10; label: ai10; V = 0.000,
+#[Out]#  'ai11': InputChannel; name: ai11; label: ai11; V = -0.000,
+#[Out]#  'ai12': InputChannel; name: ai12; label: ai12; V = 0.002,
+#[Out]#  'ai13': InputChannel; name: ai13; label: ai13; V = 0.000,
+#[Out]#  'ai14': InputChannel; name: ai14; label: ai14; V = -0.001,
+#[Out]#  'ai15': InputChannel; name: ai15; label: ai15; V = 0.000,
+#[Out]#  'ai16': InputChannel; name: ai16; label: ai16; V = -0.085,
+#[Out]#  'ai17': InputChannel; name: ai17; label: ai17; V = -0.039,
+#[Out]#  'ai18': InputChannel; name: ai18; label: ai18; V = 0.063,
+#[Out]#  'ai19': InputChannel; name: ai19; label: ai19; V = -0.088,
+#[Out]#  'ai20': InputChannel; name: ai20; label: ai20; V = -0.154,
+#[Out]#  'ai21': InputChannel; name: ai21; label: ai21; V = -0.126,
+#[Out]#  'ai22': InputChannel; name: ai22; label: ai22; V = -0.164,
+#[Out]#  'ai23': InputChannel; name: ai23; label: ai23; V = -0.112,
+#[Out]#  'ai24': InputChannel; name: ai24; label: ai24; V = 0.001,
+#[Out]#  'ai25': InputChannel; name: ai25; label: ai25; V = 0.000,
+#[Out]#  'ai26': InputChannel; name: ai26; label: ai26; V = 0.000,
+#[Out]#  'ai27': InputChannel; name: ai27; label: ai27; V = -0.001,
+#[Out]#  'ai28': InputChannel; name: ai28; label: ai28; V = 0.000,
+#[Out]#  'ai29': InputChannel; name: ai29; label: ai29; V = 0.000,
+#[Out]#  'ai30': InputChannel; name: ai30; label: ai30; V = 0.000,
+#[Out]#  'ai31': InputChannel; name: ai31; label: ai31; V = 0.000,
+#[Out]#  'ai7': InputChannel; name: ai7; label: ai7; V = -0.280,
+#[Out]#  'ai8': InputChannel; name: ai8; label: ai8; V = 0.001,
+#[Out]#  'ai9': InputChannel; name: ai9; label: ai9; V = -0.003,
+#[Out]#  'cap': InputChannel; name: ai0; label: cap; V = 0.466,
+#[Out]#  'capx': InputChannel; name: ai2; label: capx; V = 0.037,
+#[Out]#  'capy': InputChannel; name: ai3; label: capy; V = -0.064,
+#[Out]#  'dc': InputChannel; name: ai6; label: dc; V = -0.960,
+#[Out]#  'theta': InputChannel; name: ai1; label: theta; V = 3.369,
+#[Out]#  'voltage': InputChannel; name: ai4; label: voltage; V = 0.440}
+# Tue, 18 Jul 2017 16:10:14
+dt = daqtransport.DAQ_Transport(instruments, -1, 1, Rbias=1, rate = 10, 100)
+# Tue, 18 Jul 2017 16:10:33
+dt = daqtransport.DAQ_Transport(instruments, -1, 1, Rbias=1, rate = 10, numpts = 100)
+# Tue, 18 Jul 2017 16:11:04
+dt.run()
+# Tue, 18 Jul 2017 16:11:53
+daq.zero()
+# Tue, 18 Jul 2017 16:17:14
+reload(daqtransport)
+# Tue, 18 Jul 2017 16:17:20
+from imp import reload
+# Tue, 18 Jul 2017 16:17:22
+reload(daqtransport)
+#[Out]# <module 'Nowack_Lab.Procedures.daqtransport' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Procedures\\daqtransport.py'>
+# Tue, 18 Jul 2017 16:17:46
+dt = daqtransport.DAQ_Transport(instruments, -1, 1, Rbias=1, rate = 10, numpts = 100)
+# Tue, 18 Jul 2017 16:17:50
+dt.run()
+# Tue, 18 Jul 2017 16:19:24
+reload(lakeshore)
+# Tue, 18 Jul 2017 16:19:35
+Nowack_Lab.Instruments.lakeshore
+#[Out]# <module 'Nowack_Lab.Instruments.lakeshore' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Instruments\\lakeshore.py'>
+# Tue, 18 Jul 2017 16:19:39
+reload(Nowack_Lab.Instruments.lakeshore)
+#[Out]# <module 'Nowack_Lab.Instruments.lakeshore' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Instruments\\lakeshore.py'>
+# Tue, 18 Jul 2017 16:19:48
+l
+#[Out]# <Nowack_Lab.Instruments.lakeshore.Lakeshore372 at 0x10368780>
+# Tue, 18 Jul 2017 16:19:50
+del l
+# Tue, 18 Jul 2017 16:19:56
+l = Lakeshore372()
+# Tue, 18 Jul 2017 16:19:57
+l.T
+#[Out]# {1: 48.3791, 2: 3.48722, 3: 4.08729, 5: 1.01193, 6: 0.0854084, 7: 0.0, 8: 0.0}
+# Tue, 18 Jul 2017 16:20:01
+instruments['lakeshore'] = l
+# Tue, 18 Jul 2017 16:20:13
+dt = daqtransport.DAQ_Transport(instruments, -1, 1, Rbias=1, rate = 10, numpts = 100)
+# Tue, 18 Jul 2017 16:20:16
+dt.run()

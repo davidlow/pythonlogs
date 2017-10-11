@@ -1,0 +1,237 @@
+# IPython log file
+
+get_ipython().magic('load qtconsole/2017/07/setups/startlog_20170703.py')
+# Tue, 18 Jul 2017 13:00:27
+get_ipython().magic('run -i qtconsole/2017/07/setups/setup_20170714.py')
+# Tue, 18 Jul 2017 13:02:49
+s
+#[Out]# <Nowack_Lab.Instruments.squidarray.SquidArray at 0xe315358>
+# Tue, 18 Jul 2017 13:02:54
+s.__getstate__()
+#[Out]# {'Array bias': 44,
+#[Out]#  'Array flux': 14,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0.3,
+#[Out]#  'SQUID bias': 980,
+#[Out]#  'SQUID flux': 100,
+#[Out]#  'SQUID locked': True,
+#[Out]#  'Test input': 'S_flux',
+#[Out]#  'Test signal': 'Off',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
+# Tue, 18 Jul 2017 13:02:59
+s.zero()
+# Tue, 18 Jul 2017 13:03:03
+z.reset()
+# Tue, 18 Jul 2017 13:03:06
+s.reset()
+# Tue, 18 Jul 2017 13:03:09
+s.__getstate__()
+#[Out]# {'Array bias': 0,
+#[Out]#  'Array flux': 0,
+#[Out]#  'Array locked': False,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0,
+#[Out]#  'SQUID bias': 0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': False,
+#[Out]#  'Test input': 'S_flux',
+#[Out]#  'Test signal': 'Off',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
+# Tue, 18 Jul 2017 13:03:16
+s.A_bias = 44
+# Tue, 18 Jul 2017 13:03:34
+s.testSignal = 'On'
+# Tue, 18 Jul 2017 13:03:43
+s.testInput('A_flux')
+# Tue, 18 Jul 2017 13:03:51
+s.testInput = 'A_flux'
+# Tue, 18 Jul 2017 13:03:54
+s.reset()
+# Tue, 18 Jul 2017 13:04:05
+s.A_bias = 45
+# Tue, 18 Jul 2017 13:04:06
+s.A_bias = 46
+# Tue, 18 Jul 2017 13:04:08
+s.A_bias = 47
+# Tue, 18 Jul 2017 13:04:11
+s.A_bias = 48
+# Tue, 18 Jul 2017 13:04:13
+s.A_bias = 49
+# Tue, 18 Jul 2017 13:04:16
+s.A_bias = 50
+# Tue, 18 Jul 2017 13:04:19
+s.A_bias = 49
+# Tue, 18 Jul 2017 13:04:21
+s.reset()
+# Tue, 18 Jul 2017 13:04:26
+s.A_flux
+#[Out]# 0
+# Tue, 18 Jul 2017 13:04:29
+s.A_flux = 10
+# Tue, 18 Jul 2017 13:04:31
+s.A_flux = 0
+# Tue, 18 Jul 2017 13:04:33
+s.offset
+#[Out]# 0
+# Tue, 18 Jul 2017 13:04:35
+s.offset = .1
+# Tue, 18 Jul 2017 13:04:37
+s.offset = .2
+# Tue, 18 Jul 2017 13:04:39
+s.offset = .3
+# Tue, 18 Jul 2017 13:04:50
+s.offset = .4
+# Tue, 18 Jul 2017 13:04:54
+s.offset = .35
+# Tue, 18 Jul 2017 13:04:57
+s.A_flux
+#[Out]# 0
+# Tue, 18 Jul 2017 13:04:58
+s.A_flux = 1
+# Tue, 18 Jul 2017 13:05:00
+s.A_flux = 10
+# Tue, 18 Jul 2017 13:05:05
+s.A_flux = 15
+# Tue, 18 Jul 2017 13:05:08
+s.A_flux = 14
+# Tue, 18 Jul 2017 13:05:10
+s.A_flux = 16
+# Tue, 18 Jul 2017 13:05:17
+s.A_flux = 15
+# Tue, 18 Jul 2017 13:05:24
+s.offset = .34
+# Tue, 18 Jul 2017 13:05:26
+s.offset = .33
+# Tue, 18 Jul 2017 13:05:29
+s.offset = .31
+# Tue, 18 Jul 2017 13:05:40
+s.lock('Array')
+# Tue, 18 Jul 2017 13:05:42
+s.reset()
+# Tue, 18 Jul 2017 13:05:44
+s.reset()
+# Tue, 18 Jul 2017 13:05:59
+s.testInput='S_flux'
+# Tue, 18 Jul 2017 13:06:01
+s.reset()
+# Tue, 18 Jul 2017 13:07:20
+s.A_bias = 980
+# Tue, 18 Jul 2017 13:07:23
+s.reset()
+# Tue, 18 Jul 2017 13:07:27
+s.reset()
+# Tue, 18 Jul 2017 13:07:31
+s.A_bias = 100
+# Tue, 18 Jul 2017 13:07:33
+s.reset()
+# Tue, 18 Jul 2017 13:07:36
+s.A_bias = 0
+# Tue, 18 Jul 2017 13:07:38
+s.reset()
+# Tue, 18 Jul 2017 13:07:39
+s.reset()
+# Tue, 18 Jul 2017 13:07:39
+s.reset()
+# Tue, 18 Jul 2017 13:07:40
+s.reset()
+# Tue, 18 Jul 2017 13:07:46
+s.A_bias = 50
+# Tue, 18 Jul 2017 13:07:48
+s.reset()
+# Tue, 18 Jul 2017 13:07:52
+s.A_bias = 100
+# Tue, 18 Jul 2017 13:07:54
+s.reset()
+# Tue, 18 Jul 2017 13:08:00
+s.__getstate__()
+#[Out]# {'Array bias': 100,
+#[Out]#  'Array flux': 15,
+#[Out]#  'Array locked': True,
+#[Out]#  'Feedback resistor': '100kOhm',
+#[Out]#  'Integrator capacitor': '1.5nF',
+#[Out]#  'Preamp voltage offset': 0.31,
+#[Out]#  'SQUID bias': 0,
+#[Out]#  'SQUID flux': 0,
+#[Out]#  'SQUID locked': False,
+#[Out]#  'Test input': 'S_flux',
+#[Out]#  'Test signal': 'On',
+#[Out]#  'channel': 1,
+#[Out]#  'resetIntegrator': False,
+#[Out]#  'sensitivity': 'High'}
+# Tue, 18 Jul 2017 13:08:07
+s.A_bias=50
+# Tue, 18 Jul 2017 13:08:09
+s.reset()
+# Tue, 18 Jul 2017 13:08:16
+s.S_bias
+#[Out]# 0
+# Tue, 18 Jul 2017 13:08:19
+s.S_bias = 980
+# Tue, 18 Jul 2017 13:08:22
+s.reset()
+# Tue, 18 Jul 2017 13:08:28
+s.A_flux
+#[Out]# 15
+# Tue, 18 Jul 2017 13:08:31
+s.A_flux = 15
+# Tue, 18 Jul 2017 13:08:34
+s.A_flux = 14
+# Tue, 18 Jul 2017 13:08:37
+s.A_flux = 10
+# Tue, 18 Jul 2017 13:08:43
+s.reset()
+# Tue, 18 Jul 2017 13:08:48
+s.lock('Squid')
+# Tue, 18 Jul 2017 13:08:50
+s.reset()
+# Tue, 18 Jul 2017 13:08:54
+s.s_flux
+# Tue, 18 Jul 2017 13:08:57
+s.S_flux
+#[Out]# 0
+# Tue, 18 Jul 2017 13:08:58
+s.S_flux = 1
+# Tue, 18 Jul 2017 13:09:01
+s.S_flux = 90
+# Tue, 18 Jul 2017 13:09:03
+s.reset()
+# Tue, 18 Jul 2017 13:09:08
+s.S_flux = 100
+# Tue, 18 Jul 2017 13:09:15
+s.testSignal='Off'
+# Tue, 18 Jul 2017 13:09:45
+pf = Planefit(instruments=instruments)
+# Tue, 18 Jul 2017 13:09:51
+pf.run()
+# Tue, 18 Jul 2017 13:12:30
+td = Touchdown(instruments=instruments)
+# Tue, 18 Jul 2017 13:12:33
+td.run()
+# Tue, 18 Jul 2017 14:00:53
+pf = Planefit(instruments=instruments)
+# Tue, 18 Jul 2017 14:00:59
+plt.close('all')
+# Tue, 18 Jul 2017 14:01:03
+pf.run()
+# Tue, 18 Jul 2017 14:48:00
+reload
+# Tue, 18 Jul 2017 14:48:23
+from importlib import reload
+# Tue, 18 Jul 2017 14:48:29
+reload(Nowack_Lab.Procedures.touchdown)
+#[Out]# <module 'Nowack_Lab.Procedures.touchdown' from 'C:\\Users\\B82A\\Documents\\GitHub\\Nowack_Lab\\Procedures\\touchdown.py'>
+# Tue, 18 Jul 2017 14:48:37
+from Nowack_Lab.Procedures.touchdown import Touchdown
+# Tue, 18 Jul 2017 14:49:00
+pf = Planefit(instruments=instruments)
+# Tue, 18 Jul 2017 14:49:03
+plt.close('all')
+# Tue, 18 Jul 2017 14:49:08
+pf.run()

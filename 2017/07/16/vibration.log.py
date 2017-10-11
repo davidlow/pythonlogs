@@ -212,3 +212,17 @@ v = Vibration(pf, liC.R, instruments=instruments,
 )
 v.run()
 
+# Mon, 17 Jul 2017 11:56:09
+# %load qtconsole/2017/07/setups/vibration_20170716.py
+reload(Nowack_Lab.Procedures.vibration)
+from Nowack_Lab.Procedures.vibration import Vibration
+
+v = Vibration(pf, liC.R, instruments=instruments,
+                xs=np.linspace(222,322,21),
+                ys=np.linspace(25,65,9),
+                measure_time=30,
+                averages=5,
+                scanheight=40
+)
+v.run()
+

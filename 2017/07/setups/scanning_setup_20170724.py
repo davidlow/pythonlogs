@@ -1,19 +1,11 @@
-        ### Setup script, modified from gmf57.  
-###
-###  +-----------------+
-###  |  DO NOT MODIFY  |
-###  +-----------------+
-###
-### Make a copy and rename with today's date
-###
-### Author: david low (dhl88)
+# Setup script for scanning
 
 from matplotlib import pyplot as plt
 plt.ion()
-#plt.style.use("notebook")
+plt.style.use("notebook")
 
 import Nowack_Lab.Instruments.attocube
-#import Nowack_Lab.Instruments.keithley
+import Nowack_Lab.Instruments.keithley
 import Nowack_Lab.Instruments.lockin
 import Nowack_Lab.Instruments.montana
 import Nowack_Lab.Instruments.nidaq
@@ -21,30 +13,26 @@ import Nowack_Lab.Instruments.piezos
 import Nowack_Lab.Instruments.preamp
 import Nowack_Lab.Instruments.squidarray
 
+
 from Nowack_Lab.Instruments.attocube        import Attocube
 from Nowack_Lab.Instruments.lockin          import SR830
 from Nowack_Lab.Instruments.nidaq           import NIDAQ
 from Nowack_Lab.Instruments.piezos          import Piezos
 from Nowack_Lab.Instruments.montana         import Montana
 from Nowack_Lab.Instruments.squidarray      import SquidArray
-from Nowack_Lab.Instruments.preamp          import SR5113
 
 
 import Nowack_Lab.Procedures.daqspectrum
 import Nowack_Lab.Procedures.planefit
 import Nowack_Lab.Procedures.scanplane
-import Nowack_Lab.Procedures.touchdown
 
 from Nowack_Lab.Procedures.daqspectrum      import DaqSpectrum
 from Nowack_Lab.Procedures.daqspectrum      import SQUIDSpectrum
 from Nowack_Lab.Procedures.planefit         import Planefit
 from Nowack_Lab.Procedures.scanplane        import Scanplane
-from Nowack_Lab.Procedures.touchdown        import Touchdown
 
 
-from Nowack_Lab import set_experiment_data_path
-set_experiment_data_path()
-
+from Nowack_Lab.Instruments import NIDAQ, SR830, SR5113, Piezos, Montana, Attocube, SquidArray
 
 # Initialize DAQ and set input/output channels
 daq = NIDAQ(dev_name="Dev2")
@@ -66,7 +54,7 @@ daq.inputs = {
 # Initialize other measurement equipment
 pa = SR5113(port="COM3")
 liC = SR830(gpib_address=12)
-liS = SR830(gpib_address=15)
+liS = SR830(gpib_address=13)
 pz = Piezos(daq)
 montana = Montana()
 atto = Attocube(montana)

@@ -1,0 +1,7 @@
+numx = 5
+numy = 5
+step_size = 100 # Step 100 attosteps
+scans = []
+tds = []
+
+for y in 
